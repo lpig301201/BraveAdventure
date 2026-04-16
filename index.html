@@ -461,9 +461,15 @@
       typeTag.textContent = scene.type;
       areaTag.textContent = q.category;
 
-      battleLog.innerHTML = `<strong>任務情境：</strong> 你在「${scene.area}」遇到與「${q.category}」有關的處理任務，請做出最合適的選擇。`;
+      const scenarios = [
+`你在${scene.area}探險時，發現一個與「${q.category}」相關的物品。`,
+`前方出現環境任務！場景：${scene.area}，你需要處理「${q.category}」問題。`,
+`探索途中，你撿到一個「${q.category}」相關物品，該怎麼辦？`
+];
+const randomScenario = scenarios[Math.floor(Math.random()*scenarios.length)];
+battleLog.innerHTML = `<strong>冒險情境：</strong> ${randomScenario}`;
       questionText.textContent = q.question;
-      helperBox.textContent = q.tip ? `提示：${q.tip}` : "請依情境判斷最適合的分類與處理方式。";
+      helperBox.textContent = q.tip ? `任務提示：${q.tip}` : "請選擇最適合的行動完成任務。";
       feedbackBox.className = "feedback";
       feedbackBox.textContent = "";
 
