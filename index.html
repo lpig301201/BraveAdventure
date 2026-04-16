@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>環保勇者冒險：資源回收試煉之路</title>
+  <style>
+    :root{
+      --bg1:#0b1020;
+      --bg2:#16213e;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --green:#16a34a;
+      --green2:#22c55e;
+      --red:#dc2626;
+      --yellow:#f59e0b;
+      --blue:#2563eb;
+      --shadow:0 14px 36px rgba(0,0,0,.18);
+      --radius:20px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+      color:#fff;
+      background:
+        radial-gradient(circle at top left, rgba(34,197,94,.18), transparent 25%),
+        radial-gradient(circle at top right, rgba(37,99,235,.22), transparent 30%),
+        linear-gradient(180deg,var(--bg2),var(--bg1));
+      min-height:100vh;
+    }
+    .wrap{
+      width:min(920px, 100%);
+      margin:0 auto;
+      padding:18px 14px 28px;
+    }
+    .hero{
+      background:linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
+      backdrop-filter: blur(6px);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:28px;
+      padding:20px 18px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero:before,.hero:after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      opacity:.18;
+    }
+    .hero:before{width:180px;height:180px;background:#22c55e;right:-50px;top:-50px}
+    .hero:after{width:120px;height:120px;background:#f59e0b;left:-30px;bottom:-30px}
+    h1{
+      margin:0 0 8px;
+      font-size:clamp(1.55rem, 4vw, 2.2rem);
+      line-height:1.2;
+    }
+    .subtitle{
+      margin:0;
+      color:#e5e7eb;
+      font-size:.98rem;
+      line-height:1.7;
+    }
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:14px;
+    }
+    .chip{
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.18);
+      color:#fff;
+      padding:7px 11px;
+      border-radius:999px;
+      font-size:.9rem;
+    }
+
+    .game{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+    .panel{
+      background:var(--card);
+      color:var(--text);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+    .status{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
+    }
+    .stat{
+      background:linear-gradient(180deg, #f8fafc, #eef2ff);
+      border:1px solid #e5e7eb;
+      border-radius:16px;
+      padding:12px 10px;
+      text-align:center;
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+    }
+    .stat .label{
+      color:var(--muted);
+      font-size:.84rem;
+      margin-bottom:4px;
+    }
+    .stat .value{
+      font-size:1.15rem;
+      font-weight:800;
+      color:#111827;
+    }
+
+    .scene{
+      background:linear-gradient(180deg, #eff6ff, #ecfeff 55%, #f0fdf4);
+      border:1px solid #dbeafe;
+      border-radius:22px;
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+      min-height:180px;
+    }
+    .scene-title{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-weight:800;
+      font-size:1.05rem;
+      color:#0f172a;
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:999px;
+      padding:8px 12px;
+      box-shadow:0 8px 20px rgba(0,0,0,.06);
+    }
+    .story{
+      margin:14px 0 10px;
+      color:#334155;
+      line-height:1.8;
+      font-size:1rem;
+    }
+    .npc{
+      margin-top:6px;
+      background:#fff7ed;
+      border:1px solid #fed7aa;
+      color:#7c2d12;
+      border-radius:16px;
+      padding:12px;
+      line-height:1.7;
+      font-size:.96rem;
+    }
+
+    .question-box{
+      margin-top:12px;
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:18px;
+      padding:14px;
+    }
+    .q-type{
+      display:inline-block;
+      background:#dcfce7;
+      color:#166534;
+      border-radius:999px;
+      padding:5px 10px;
+      font-size:.84rem;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+    .question{
+      font-size:1.12rem;
+      font-weight:800;
+      line-height:1.6;
+      color:#111827;
+      margin-bottom:12px;
+    }
+
+    .choices{
+      display:grid;
+      gap:10px;
+    }
+    .choice{
+      width:100%;
+      border:none;
+      border-radius:16px;
+      padding:14px 14px;
+      text-align:left;
+      font-size:1rem;
+      font-weight:700;
+      background:#f8fafc;
+      color:#1f2937;
+      border:2px solid transparent;
+      cursor:pointer;
+      transition:transform .12s ease, border-color .12s ease, background .12s ease;
+      touch-action:manipulation;
+    }
+    .choice:active{transform:scale(.99)}
+    .choice:hover{border-color:#bfdbfe;background:#eff6ff}
+    .choice.correct{background:#dcfce7;border-color:#22c55e;color:#166534}
+    .choice.wrong{background:#fee2e2;border-color:#ef4444;color:#991b1b}
+    .choice:disabled{cursor:default}
+
+    .feedback{
+      display:none;
+      margin-top:12px;
+      border-radius:16px;
+      padding:14px;
+      line-height:1.8;
+      font-size:.98rem;
+      font-weight:700;
+    }
+    .feedback.show{display:block}
+    .feedback.good{background:#ecfdf5;color:#166534;border:1px solid #a7f3d0}
+    .feedback.bad{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+    .tip{
+      margin-top:8px;
+      font-weight:600;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .btn{
+      border:none;
+      border-radius:999px;
+      padding:13px 18px;
+      font-size:1rem;
+      font-weight:800;
+      cursor:pointer;
+      touch-action:manipulation;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg, var(--green), var(--green2));
+      color:#fff;
+      box-shadow:0 10px 24px rgba(34,197,94,.28);
+    }
+    .btn-secondary{
+      background:#e0f2fe;
+      color:#075985;
+    }
+    .btn-ghost{
+      background:#f3f4f6;
+      color:#374151;
+    }
+
+    .progress-wrap{
+      margin-top:12px;
+      background:#e5e7eb;
+      border-radius:999px;
+      overflow:hidden;
+      height:14px;
+    }
+    .progress{
+      width:0%;
+      height:100%;
+      background:linear-gradient(90deg,#22c55e,#3b82f6);
+      transition:width .25s ease;
+    }
+
+    .result{
+      display:none;
+      text-align:center;
+    }
+    .result.show{display:block}
+    .rank{
+      font-size:1.2rem;
+      font-weight:900;
+      margin-top:4px;
+    }
+    .badge{
+      display:inline-block;
+      margin-top:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:#fef3c7;
+      color:#92400e;
+      font-weight:800;
+    }
+    .footer-note{
+      color:#cbd5e1;
+      text-align:center;
+      margin-top:16px;
+      font-size:.9rem;
+      line-height:1.7;
+    }
+
+    @media (max-width:720px){
+      .status{grid-template-columns: repeat(2,1fr)}
+      .wrap{padding:14px 12px 24px}
+      .panel{padding:14px}
+      .question{font-size:1.04rem}
+      .choice{padding:13px 12px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>🛡️ 環保勇者冒險：資源回收試煉之路</h1>
+      <p class="subtitle">
+        垃圾魔王讓王國陷入混亂，鋰電池亂丟、農藥罐污染土地、紙餐盒分類失控。
+        你將化身環保勇者，透過一關一關的任務，學會正確的分類流程與特殊回收方式，拯救王國！ ✨
+      </p>
+      <div class="chips">
+        <span class="chip">🎮 冒險模式初版</span>
+        <span class="chip">📱 手機可玩</span>
+        <span class="chip">♻️ 流程宣導導向</span>
+        <span class="chip">🧪 含危險物示範題</span>
+      </div>
+    </section>
+
+    <section class="game">
+      <div class="panel" id="gamePanel">
+        <div class="status">
+          <div class="stat">
+            <div class="label">目前關卡</div>
+            <div class="value" id="stageText">1 / 5</div>
+          </div>
+          <div class="stat">
+            <div class="label">勇者分數</div>
+            <div class="value" id="scoreText">0</div>
+          </div>
+          <div class="stat">
+            <div class="label">答對題數</div>
+            <div class="value" id="correctText">0</div>
+          </div>
+          <div class="stat">
+            <div class="label">通關門檻</div>
+            <div class="value">40 分</div>
+          </div>
+        </div>
+
+        <div class="progress-wrap" aria-label="進度條">
+          <div class="progress" id="progressBar"></div>
+        </div>
+
+        <div id="quizArea">
+          <div class="scene">
+            <div class="scene-title" id="sceneTitle">🌿 新手村試煉</div>
+            <div class="story" id="storyText"></div>
+            <div class="npc" id="npcText"></div>
+
+            <div class="question-box">
+              <span class="q-type" id="typeText">流程任務</span>
+              <div class="question" id="questionText"></div>
+              <div class="choices" id="choicesBox"></div>
+              <div class="feedback" id="feedbackBox"></div>
+              <div class="actions">
+                <button class="btn btn-primary" id="startBtn">開始冒險</button>
+                <button class="btn btn-secondary" id="nextBtn" style="display:none;">前往下一關 ➜</button>
+                <button class="btn btn-ghost" id="restartBtn" style="display:none;">重新挑戰</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result panel" id="resultBox" style="margin-top:14px;">
+          <h2 style="margin:0 0 8px; color:#0f172a;">🎉 冒險結束！</h2>
+          <p id="resultDesc" style="color:#334155; line-height:1.8; margin:0;"></p>
+          <div class="rank" id="rankText"></div>
+          <div class="badge" id="badgeText"></div>
+          <div class="actions" style="justify-content:center; margin-top:18px;">
+            <button class="btn btn-primary" onclick="restartGame()">再玩一次</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      這是示範初版，先用 5 關呈現「勇者鬥惡龍式流程冒險」的玩法方向。<br>
+      後續可再擴充為完整題庫、角色立繪、怪物戰鬥、通關 QR Code 與抽獎導流版本。
+    </p>
+  </div>
+
+  <script>
+    const stages = [
+      {
+        stage: "🌿 新手村試煉",
+        type: "流程任務",
+        story: "新手村的回收精靈生氣了，因為村民把回收物都亂丟，導致回收祭壇失去光芒。",
+        npc: "🧚 回收精靈：勇者啊，請從最基本的回收前處理開始，讓王國重新恢復秩序！",
+        question: "喝完的寶特瓶，在回收前最適合怎麼做？",
+        choices: [
+          { key: "A", text: "直接投入回收箱" },
+          { key: "B", text: "清洗後壓扁再回收" },
+          { key: "C", text: "裝滿水後再丟掉" }
+        ],
+        answer: "B",
+        tip: "清洗壓扁後再回收，可提升回收品質並節省空間。",
+        score: 10
+      },
+      {
+        stage: "📦 紙類迷宮",
+        type: "分類判斷",
+        story: "你來到紙類迷宮，門口堆滿了各種紙製物。只有判斷正確的人，神殿之門才會打開。",
+        npc: "📜 守門學者：看起來像紙，不一定都能回收。真正的勇者，懂得分辨乾淨與污染。",
+        question: "沾有油污的紙餐盒，應如何處理？",
+        choices: [
+          { key: "A", text: "紙類回收" },
+          { key: "B", text: "一般垃圾" },
+          { key: "C", text: "塑膠回收" }
+        ],
+        answer: "B",
+        tip: "沾油紙餐盒通常不宜回收，應依一般垃圾方式處理。",
+        score: 10
+      },
+      {
+        stage: "⚠️ 危險山谷",
+        type: "特殊回收",
+        story: "山谷裡閃著紅光，一顆顆危險物正在被垃圾魔王操控，若處理錯誤，整座山谷都會爆裂！",
+        npc: "🔥 山谷祭司：這不是普通垃圾！要用正確管道封印它的危險力量。",
+        question: "發熱的鋰電池，最適合怎麼處理？",
+        choices: [
+          { key: "A", text: "丟進一般垃圾桶" },
+          { key: "B", text: "交給指定回收點" },
+          { key: "C", text: "放進廚餘桶" }
+        ],
+        answer: "B",
+        tip: "鋰電池需妥善回收，避免短路、起火或爆炸風險。",
+        score: 10
+      },
+      {
+        stage: "🧪 農地淨化任務",
+        type: "危險容器處理",
+        story: "農地受到污染，一旁散落著用過的農藥罐。若隨意丟棄，土地精靈將無法恢復生機。",
+        npc: "🌾 土地精靈：勇者，請用正確方式處理這些危險容器，別讓污染繼續擴散。",
+        question: "用過的農藥罐，較適合怎麼處理？",
+        choices: [
+          { key: "A", text: "清洗後依規定回收" },
+          { key: "B", text: "直接丟一般垃圾" },
+          { key: "C", text: "埋進土裡" }
+        ],
+        answer: "A",
+        tip: "農藥罐屬特殊容器，應依規定清洗並交付適當回收管道。",
+        score: 10
+      },
+      {
+        stage: "👑 分類神殿最終試煉",
+        type: "流程綜合",
+        story: "分類神殿終於重啟，但最後一道考驗仍未解除。神殿守門人要你證明，你真的懂得安全分類。",
+        npc: "🏛️ 神殿守門人：只差最後一步了。處理危險光源時，千萬不可大意。",
+        question: "廢燈管最適合送往哪裡？",
+        choices: [
+          { key: "A", text: "一般垃圾" },
+          { key: "B", text: "特殊回收點" },
+          { key: "C", text: "廚餘桶" }
+        ],
+        answer: "B",
+        tip: "燈管可能含有害物質，應送交適當回收點妥善處理。",
+        score: 10
+      }
+    ];
+
+    let current = -1;
+    let score = 0;
+    let correctCount = 0;
+    let locked = false;
+
+    const stageText = document.getElementById("stageText");
+    const scoreText = document.getElementById("scoreText");
+    const correctText = document.getElementById("correctText");
+    const progressBar = document.getElementById("progressBar");
+    const sceneTitle = document.getElementById("sceneTitle");
+    const storyText = document.getElementById("storyText");
+    const npcText = document.getElementById("npcText");
+    const typeText = document.getElementById("typeText");
+    const questionText = document.getElementById("questionText");
+    const choicesBox = document.getElementById("choicesBox");
+    const feedbackBox = document.getElementById("feedbackBox");
+    const startBtn = document.getElementById("startBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    const resultBox = document.getElementById("resultBox");
+    const resultDesc = document.getElementById("resultDesc");
+    const rankText = document.getElementById("rankText");
+    const badgeText = document.getElementById("badgeText");
+
+    function updateStatus() {
+      stageText.textContent = current < 0 ? `0 / ${stages.length}` : `${current + 1} / ${stages.length}`;
+      scoreText.textContent = score;
+      correctText.textContent = correctCount;
+      const percent = current < 0 ? 0 : ((current) / stages.length) * 100;
+      progressBar.style.width = percent + "%";
+    }
+
+    function renderIntro() {
+      sceneTitle.textContent = "🗺️ 冒險即將開始";
+      storyText.textContent = "按下開始後，你將依序挑戰 5 個關卡。每答對 1 題可獲得 10 分，累積 40 分以上即可通過試煉。";
+      npcText.textContent = "👑 國王：環保勇者啊，請你用正確分類知識，修復王國的秩序！";
+      typeText.textContent = "冒險說明";
+      questionText.textContent = "準備好踏上資源回收試煉之路了嗎？";
+      choicesBox.innerHTML = "";
+      feedbackBox.className = "feedback";
+      feedbackBox.textContent = "";
+      startBtn.style.display = "inline-block";
+      nextBtn.style.display = "none";
+      restartBtn.style.display = "none";
+      resultBox.classList.remove("show");
+      updateStatus();
+    }
+
+    function renderStage() {
+      const item = stages[current];
+      locked = false;
+      sceneTitle.textContent = item.stage;
+      storyText.textContent = item.story;
+      npcText.textContent = item.npc;
+      typeText.textContent = item.type;
+      questionText.textContent = item.question;
+      choicesBox.innerHTML = "";
+      feedbackBox.className = "feedback";
+      feedbackBox.textContent = "";
+      startBtn.style.display = "none";
+      nextBtn.style.display = "none";
+      restartBtn.style.display = "none";
+
+      item.choices.forEach(choice => {
+        const btn = document.createElement("button");
+        btn.className = "choice";
+        btn.innerHTML = `<strong>${choice.key}.</strong> ${choice.text}`;
+        btn.addEventListener("click", () => selectAnswer(choice.key, btn));
+        choicesBox.appendChild(btn);
+      });
+
+      stageText.textContent = `${current + 1} / ${stages.length}`;
+      progressBar.style.width = `${(current / stages.length) * 100}%`;
+    }
+
+    function selectAnswer(key, btn) {
+      if (locked) return;
+      locked = true;
+      const item = stages[current];
+      const buttons = [...document.querySelectorAll(".choice")];
+      buttons.forEach(b => b.disabled = true);
+
+      const correctBtn = buttons.find(b => b.innerText.trim().startsWith(item.answer + "."));
+      if (key === item.answer) {
+        btn.classList.add("correct");
+        score += item.score;
+        correctCount += 1;
+        feedbackBox.className = "feedback show good";
+        feedbackBox.innerHTML = `✅ <strong>答對了！</strong><div class="tip">${item.tip}</div>`;
+      } else {
+        btn.classList.add("wrong");
+        if (correctBtn) correctBtn.classList.add("correct");
+        feedbackBox.className = "feedback show bad";
+        feedbackBox.innerHTML = `❌ <strong>這題答錯了。</strong><div class="tip">正確答案是 ${item.answer}。${item.tip}</div>`;
+      }
+
+      updateStatus();
+
+      if (current < stages.length - 1) {
+        nextBtn.style.display = "inline-block";
+      } else {
+        restartBtn.style.display = "inline-block";
+        setTimeout(showResult, 450);
+      }
+    }
+
+    function nextStage() {
+      current += 1;
+      if (current >= stages.length) {
+        showResult();
+        return;
+      }
+      renderStage();
+    }
+
+    function showResult() {
+      progressBar.style.width = "100%";
+      resultBox.classList.add("show");
+      let rank = "";
+      let badge = "";
+
+      if (score >= 50) {
+        rank = "🏆 傳說級環保勇者";
+        badge = "已成功封印垃圾魔王！";
+      } else if (score >= 40) {
+        rank = "🥇 合格環保勇者";
+        badge = "你已通過資源回收試煉！";
+      } else if (score >= 20) {
+        rank = "🛡️ 見習環保勇者";
+        badge = "再挑戰一次，就能更熟悉分類流程！";
+      } else {
+        rank = "🌱 新手旅人";
+        badge = "先別灰心，王國還在等你成長！";
+      }
+
+      resultDesc.innerHTML = `你本次共答對 <strong>${correctCount}</strong> 題，獲得 <strong>${score}</strong> 分。<br>這個初版示範已經能呈現「流程題 × 冒險模式」的玩法方向。`;
+      rankText.textContent = rank;
+      badgeText.textContent = badge;
+    }
+
+    function restartGame() {
+      current = -1;
+      score = 0;
+      correctCount = 0;
+      renderIntro();
+    }
+
+    startBtn.addEventListener("click", nextStage);
+    nextBtn.addEventListener("click", nextStage);
+    restartBtn.addEventListener("click", restartGame);
+
+    renderIntro();
+    window.restartGame = restartGame;
+  </script>
+</body>
+</html>
