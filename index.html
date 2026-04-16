@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
   <title>環保勇者冒險</title>
   <style>
     :root{
@@ -180,7 +180,230 @@
       .battle-log{min-height:auto}
       .bubble{min-height:78px}
     }
-  </style>
+  
+/* ===== LINE mobile browser optimization overrides ===== */
+html, body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+body{
+  min-height:100dvh;
+}
+.wrap{
+  width:100% !important;
+  max-width:680px !important;
+  margin:0 auto !important;
+  padding:12px 10px 24px !important;
+}
+.layout{
+  display:block !important;
+}
+.panel{
+  padding:14px !important;
+  border-radius:18px !important;
+}
+.hero{
+  padding:18px 14px !important;
+  border-radius:22px !important;
+}
+h1{
+  font-size:1.5rem !important;
+}
+.sub{
+  font-size:.95rem !important;
+  line-height:1.7 !important;
+}
+.chips{
+  gap:6px !important;
+}
+.chip{
+  font-size:.82rem !important;
+  padding:6px 10px !important;
+}
+.battlefield{
+  min-height:auto !important;
+  padding:12px !important;
+  border-radius:18px !important;
+}
+.battlefield:before{
+  bottom:42px !important;
+  height:70px !important;
+}
+.stagebar{
+  gap:8px !important;
+}
+.stagepill{
+  font-size:.9rem !important;
+  padding:8px 10px !important;
+}
+.turntext{
+  font-size:.85rem !important;
+}
+.actors{
+  grid-template-columns:1fr 1fr !important;
+  gap:8px !important;
+}
+.actor{
+  padding:8px 4px !important;
+}
+.sprite{
+  font-size:3rem !important;
+}
+.name{
+  font-size:.92rem !important;
+}
+.bubble{
+  min-height:68px !important;
+  padding:10px !important;
+  font-size:.88rem !important;
+  line-height:1.6 !important;
+}
+.barlabel{
+  font-size:.78rem !important;
+}
+.hpbar{
+  height:13px !important;
+}
+.mini-stats{
+  grid-template-columns:repeat(2,1fr) !important;
+  gap:8px !important;
+  margin-top:10px !important;
+}
+.stat{
+  min-height:70px !important;
+  padding:10px 8px !important;
+  border-radius:14px !important;
+}
+.stat .label{
+  font-size:.8rem !important;
+}
+.stat .value{
+  font-size:1rem !important;
+}
+.command-shell{
+  margin-top:10px !important;
+  border-radius:18px !important;
+}
+.command-top{
+  padding:12px 12px 8px !important;
+}
+.rpg-tags{
+  gap:6px !important;
+  margin-bottom:8px !important;
+}
+.rpg-tag{
+  font-size:.76rem !important;
+  padding:5px 8px !important;
+}
+.battle-log{
+  min-height:auto !important;
+  padding:10px !important;
+  font-size:.9rem !important;
+  line-height:1.7 !important;
+}
+.command-body{
+  display:block !important;
+}
+.question-pane{
+  border-right:none !important;
+  border-bottom:1px solid rgba(148,163,184,.2) !important;
+  padding:12px !important;
+}
+.question-title{
+  font-size:.84rem !important;
+  margin-bottom:6px !important;
+}
+.question{
+  min-height:auto !important;
+  font-size:1rem !important;
+  line-height:1.7 !important;
+  margin-bottom:10px !important;
+}
+.helper-box{
+  min-height:auto !important;
+  padding:10px !important;
+  font-size:.88rem !important;
+  line-height:1.65 !important;
+}
+.command-pane{
+  padding:10px !important;
+}
+.command-title{
+  font-size:.86rem !important;
+  margin-bottom:8px !important;
+}
+.choices{
+  gap:8px !important;
+}
+.choice{
+  min-height:58px !important;
+  padding:12px 10px !important;
+  border-radius:14px !important;
+}
+.choice .symbol{
+  width:32px !important;
+  height:32px !important;
+  flex:0 0 32px !important;
+  border-radius:10px !important;
+  font-size:.95rem !important;
+}
+.choice .meta .code{
+  font-size:.76rem !important;
+}
+.choice .meta .label{
+  font-size:.92rem !important;
+  line-height:1.45 !important;
+}
+.feedback{
+  margin:10px !important;
+  padding:12px !important;
+  border-radius:14px !important;
+  font-size:.9rem !important;
+}
+.actions{
+  padding:0 10px 12px !important;
+  gap:8px !important;
+}
+.btn{
+  width:100% !important;
+  min-height:48px !important;
+  padding:12px 14px !important;
+  font-size:.96rem !important;
+  border-radius:999px !important;
+}
+.result{
+  margin-top:12px !important;
+}
+.rank{
+  font-size:1.08rem !important;
+}
+.badge{
+  font-size:.9rem !important;
+  line-height:1.5 !important;
+}
+.small{
+  font-size:.82rem !important;
+}
+.footer-note{
+  font-size:.82rem !important;
+  line-height:1.65 !important;
+  padding:0 6px !important;
+}
+
+/* extra small phones */
+@media (max-width:390px){
+  .wrap{padding:10px 8px 22px !important;}
+  h1{font-size:1.35rem !important;}
+  .sub{font-size:.9rem !important;}
+  .sprite{font-size:2.7rem !important;}
+  .bubble{font-size:.84rem !important;}
+  .choice .meta .label{font-size:.88rem !important;}
+}
+
+</style>
 </head>
 <body>
   <div class="wrap">
@@ -190,6 +413,10 @@
         踏上分類試煉，成為環保勇者
       </p>
       <div class="chips">
+        <span class="chip">🎲 隨機抽題</span>
+        <span class="chip">📚 100題題庫</span>
+        <span class="chip">⚖️ 題型平衡</span>
+        <span class="chip">📱 手機可玩</span>
       </div>
     </section>
 
@@ -239,7 +466,7 @@
               <span class="rpg-tag rpg-gold">每題答對 +10 分</span>
             </div>
             <div class="battle-log" id="battleLog">
-              <strong>任務提示：</strong> 任務提示：請依據冒險選出最合適的行動
+              <strong>任務提示：</strong> 按下開始後，系統會從 100 題題庫中隨機抽出 15 題，並兼顧危險物、流程判斷與觀念題。每答對 1 題得 10 分，答錯則失去 1 點生命。
             </div>
           </div>
 
@@ -430,7 +657,7 @@
 
       typeTag.textContent = "冒險說明";
       areaTag.textContent = "起始營地";
-      battleLog.innerHTML = `<strong>任務提示：</strong> 請依據冒險選出最合適的行動。`;
+      battleLog.innerHTML = `<strong>任務提示：</strong> 本輪已從題庫中隨機抽出 15 題，並自動平衡危險物、流程題與觀念題。`;
       questionText.textContent = "準備好進入資源回收冒險了嗎？";
       helperBox.textContent = "你會在不同場景中遇到需要判斷分類與處理方式的物品。請依情境展現身為勇者的智慧、勇氣與力量，完成任務並累積分數。";
       choicesBox.innerHTML = "";
