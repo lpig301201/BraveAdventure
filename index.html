@@ -3,616 +3,582 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>環保勇者冒險：資源回收試煉之路</title>
+  <title>環保勇者冒險</title>
   <style>
     :root{
-      --bg1:#0b1020;
-      --bg2:#16213e;
-      --card:#ffffff;
+      --bgA:#0b1020;
+      --bgB:#172554;
+      --panel:#ffffff;
       --text:#1f2937;
-      --muted:#6b7280;
+      --muted:#64748b;
       --green:#16a34a;
       --green2:#22c55e;
       --red:#dc2626;
-      --yellow:#f59e0b;
+      --gold:#f59e0b;
       --blue:#2563eb;
-      --shadow:0 14px 36px rgba(0,0,0,.18);
-      --radius:20px;
+      --sky:#0ea5e9;
+      --line:#06c755;
+      --shadow:0 18px 40px rgba(0,0,0,.20);
+      --radius:22px;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: "Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+      font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
       color:#fff;
-      background:
-        radial-gradient(circle at top left, rgba(34,197,94,.18), transparent 25%),
-        radial-gradient(circle at top right, rgba(37,99,235,.22), transparent 30%),
-        linear-gradient(180deg,var(--bg2),var(--bg1));
       min-height:100vh;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(34,197,94,.15), transparent 22%),
+        radial-gradient(circle at 85% 15%, rgba(245,158,11,.14), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(14,165,233,.12), transparent 30%),
+        linear-gradient(180deg,var(--bgB),var(--bgA));
     }
-    .wrap{
-      width:min(920px, 100%);
-      margin:0 auto;
-      padding:18px 14px 28px;
-    }
+    .wrap{width:min(1120px,100%);margin:0 auto;padding:16px 12px 32px}
     .hero{
-      background:linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
-      backdrop-filter: blur(6px);
-      border:1px solid rgba(255,255,255,.18);
-      border-radius:28px;
-      padding:20px 18px;
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
+      position:relative; overflow:hidden;
+      border-radius:30px; padding:22px 18px;
+      background:linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
+      border:1px solid rgba(255,255,255,.18); box-shadow:var(--shadow);
+      backdrop-filter: blur(8px);
     }
-    .hero:before,.hero:after{
-      content:"";
-      position:absolute;
-      border-radius:50%;
-      opacity:.18;
-    }
-    .hero:before{width:180px;height:180px;background:#22c55e;right:-50px;top:-50px}
-    .hero:after{width:120px;height:120px;background:#f59e0b;left:-30px;bottom:-30px}
-    h1{
-      margin:0 0 8px;
-      font-size:clamp(1.55rem, 4vw, 2.2rem);
-      line-height:1.2;
-    }
-    .subtitle{
-      margin:0;
-      color:#e5e7eb;
-      font-size:.98rem;
-      line-height:1.7;
-    }
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:14px;
-    }
-    .chip{
-      background:rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.18);
-      color:#fff;
-      padding:7px 11px;
-      border-radius:999px;
-      font-size:.9rem;
-    }
+    .hero:before,.hero:after{content:"";position:absolute;border-radius:50%;opacity:.18}
+    .hero:before{width:220px;height:220px;background:#22c55e;right:-70px;top:-80px}
+    .hero:after{width:150px;height:150px;background:#f59e0b;left:-35px;bottom:-45px}
+    h1{margin:0 0 8px;font-size:clamp(1.7rem,4.2vw,2.4rem);line-height:1.15}
+    .sub{margin:0;color:#e5e7eb;line-height:1.8;font-size:.98rem}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .chip{padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.16);font-size:.9rem}
 
-    .game{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
-    }
+    .layout{display:grid;grid-template-columns:1fr;gap:14px;margin-top:16px}
     .panel{
-      background:var(--card);
-      color:var(--text);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:16px;
+      background:var(--panel); color:var(--text); border-radius:var(--radius);
+      box-shadow:var(--shadow); padding:18px;
     }
-    .status{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:10px;
+    .battlefield{
+      background:linear-gradient(180deg,#dbeafe 0%, #e0f2fe 35%, #dcfce7 100%);
+      border:1px solid #bfdbfe; border-radius:24px; padding:14px; overflow:hidden; position:relative;
+      min-height:300px;
     }
+    .battlefield:before{
+      content:""; position:absolute; left:0; right:0; bottom:48px; height:84px;
+      background:linear-gradient(180deg, rgba(34,197,94,.12), rgba(22,163,74,.24));
+      border-top:2px dashed rgba(22,163,74,.28);
+    }
+    .stagebar{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+    .stagepill{
+      display:inline-flex; gap:8px; align-items:center;
+      background:#fff; border:1px solid #e5e7eb; border-radius:999px; padding:8px 12px;
+      font-weight:800; color:#0f172a;
+    }
+    .turntext{font-size:.92rem;color:#475569;font-weight:800}
+    .actors{display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:end; margin-top:8px}
+    .actor{text-align:center; position:relative; padding:12px 8px}
+    .sprite{font-size:4.2rem; line-height:1; filter:drop-shadow(0 8px 10px rgba(0,0,0,.12)); user-select:none}
+    .enemy .sprite{transform:scaleX(-1)}
+    .name{margin-top:8px; font-size:1rem; font-weight:900}
+    .hpbox{margin-top:8px}
+    .barlabel{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:#475569;font-weight:800;margin-bottom:5px}
+    .hpbar{background:#e5e7eb;border-radius:999px;height:15px;overflow:hidden;border:1px solid #cbd5e1}
+    .hpfill{height:100%;transition:width .3s ease}
+    .heroHp{background:linear-gradient(90deg,#22c55e,#16a34a)}
+    .enemyHp{background:linear-gradient(90deg,#ef4444,#dc2626)}
+    .bubble{
+      margin-top:10px; background:#fff7ed; border:1px solid #fdba74; color:#7c2d12;
+      border-radius:16px; padding:11px 12px; line-height:1.7; font-size:.95rem; min-height:72px;
+    }
+
+    .mini-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
     .stat{
-      background:linear-gradient(180deg, #f8fafc, #eef2ff);
-      border:1px solid #e5e7eb;
-      border-radius:16px;
-      padding:12px 10px;
-      text-align:center;
-      min-height:78px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
+      background:linear-gradient(180deg,#f8fafc,#eef2ff);
+      border:1px solid #e5e7eb;border-radius:18px;padding:12px 10px;text-align:center;min-height:78px;
+      display:flex;justify-content:center;align-items:center;flex-direction:column;
     }
-    .stat .label{
-      color:var(--muted);
-      font-size:.84rem;
-      margin-bottom:4px;
-    }
-    .stat .value{
-      font-size:1.15rem;
-      font-weight:800;
-      color:#111827;
-    }
+    .stat .label{font-size:.84rem;color:var(--muted);margin-bottom:4px}
+    .stat .value{font-size:1.14rem;font-weight:900;color:#0f172a}
 
-    .scene{
-      background:linear-gradient(180deg, #eff6ff, #ecfeff 55%, #f0fdf4);
-      border:1px solid #dbeafe;
-      border-radius:22px;
-      padding:14px;
-      position:relative;
-      overflow:hidden;
-      min-height:180px;
-    }
-    .scene-title{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-weight:800;
-      font-size:1.05rem;
-      color:#0f172a;
-      background:#fff;
-      border:1px solid #e5e7eb;
-      border-radius:999px;
-      padding:8px 12px;
-      box-shadow:0 8px 20px rgba(0,0,0,.06);
-    }
-    .story{
-      margin:14px 0 10px;
-      color:#334155;
-      line-height:1.8;
-      font-size:1rem;
-    }
-    .npc{
-      margin-top:6px;
-      background:#fff7ed;
-      border:1px solid #fed7aa;
-      color:#7c2d12;
-      border-radius:16px;
-      padding:12px;
-      line-height:1.7;
-      font-size:.96rem;
-    }
-
-    .question-box{
+    .command-shell{
       margin-top:12px;
-      background:#fff;
-      border:1px solid #e5e7eb;
-      border-radius:18px;
-      padding:14px;
+      background:linear-gradient(180deg,#0b1220,#111827);
+      border:3px solid #cbd5e1;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:inset 0 0 0 2px rgba(255,255,255,.08), 0 16px 34px rgba(2,6,23,.28);
     }
-    .q-type{
-      display:inline-block;
-      background:#dcfce7;
-      color:#166534;
-      border-radius:999px;
-      padding:5px 10px;
-      font-size:.84rem;
-      font-weight:700;
-      margin-bottom:10px;
-    }
-    .question{
-      font-size:1.12rem;
-      font-weight:800;
-      line-height:1.6;
-      color:#111827;
-      margin-bottom:12px;
-    }
-
-    .choices{
-      display:grid;
-      gap:10px;
-    }
-    .choice{
-      width:100%;
-      border:none;
+    .command-top{padding:14px 14px 10px;border-bottom:1px solid rgba(148,163,184,.25);background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02))}
+    .rpg-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+    .rpg-tag{display:inline-block;padding:6px 10px;border-radius:999px;font-size:.82rem;font-weight:900}
+    .rpg-green{background:#14532d;color:#dcfce7;border:1px solid rgba(255,255,255,.08)}
+    .rpg-blue{background:#1e3a8a;color:#dbeafe;border:1px solid rgba(255,255,255,.08)}
+    .rpg-gold{background:#78350f;color:#fef3c7;border:1px solid rgba(255,255,255,.08)}
+    .battle-log{
+      background:rgba(15,23,42,.72);
+      border:1px solid rgba(148,163,184,.28);
       border-radius:16px;
-      padding:14px 14px;
-      text-align:left;
-      font-size:1rem;
-      font-weight:700;
-      background:#f8fafc;
-      color:#1f2937;
-      border:2px solid transparent;
-      cursor:pointer;
-      transition:transform .12s ease, border-color .12s ease, background .12s ease;
-      touch-action:manipulation;
+      color:#e5f0ff;
+      padding:12px;
+      line-height:1.8;
+      min-height:88px;
+      font-size:.98rem;
     }
+    .battle-log strong{color:#fff}
+    .command-body{display:grid;grid-template-columns:1.12fr .88fr;gap:0}
+    .question-pane{padding:14px;border-right:1px solid rgba(148,163,184,.2);background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01))}
+    .question-title{color:#93c5fd;font-size:.9rem;font-weight:900;letter-spacing:.03em;margin-bottom:8px}
+    .question{color:#f8fafc;font-size:1.12rem;font-weight:900;line-height:1.75;margin-bottom:12px;min-height:86px}
+    .helper-box{background:rgba(30,41,59,.72);border:1px solid rgba(148,163,184,.22);border-radius:16px;color:#cbd5e1;padding:11px 12px;font-size:.92rem;line-height:1.75;min-height:92px}
+    .command-pane{padding:12px;background:linear-gradient(180deg, rgba(2,6,23,.12), rgba(2,6,23,.28))}
+    .command-title{color:#fef3c7;font-size:.92rem;font-weight:900;margin-bottom:8px}
+    .choices{display:grid;gap:10px}
+    .choice{
+      width:100%;display:flex;align-items:center;gap:10px;text-align:left;border:none;cursor:pointer;
+      border-radius:16px;padding:13px 12px;font-size:.98rem;font-weight:900;
+      background:linear-gradient(180deg,#f8fafc,#e2e8f0);color:#0f172a;border:2px solid transparent;
+      transition:transform .1s ease, border-color .12s ease, box-shadow .12s ease, background .12s ease;
+      touch-action:manipulation;min-height:62px;
+    }
+    .choice .symbol{width:34px;height:34px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#dbeafe;color:#1d4ed8;font-size:1rem;flex:0 0 34px}
+    .choice .meta{display:flex;flex-direction:column;gap:3px}
+    .choice .meta .code{font-size:.82rem;color:#475569}
+    .choice .meta .label{font-size:.98rem;color:#0f172a}
+    .choice:hover{border-color:#60a5fa;box-shadow:0 0 0 3px rgba(59,130,246,.15)}
     .choice:active{transform:scale(.99)}
-    .choice:hover{border-color:#bfdbfe;background:#eff6ff}
-    .choice.correct{background:#dcfce7;border-color:#22c55e;color:#166534}
-    .choice.wrong{background:#fee2e2;border-color:#ef4444;color:#991b1b}
+    .choice.correct{background:linear-gradient(180deg,#dcfce7,#bbf7d0);border-color:#22c55e;color:#166534}
+    .choice.correct .symbol{background:#14532d;color:#dcfce7}
+    .choice.wrong{background:linear-gradient(180deg,#fee2e2,#fecaca);border-color:#ef4444;color:#991b1b}
+    .choice.wrong .symbol{background:#7f1d1d;color:#fee2e2}
     .choice:disabled{cursor:default}
 
-    .feedback{
-      display:none;
-      margin-top:12px;
-      border-radius:16px;
-      padding:14px;
-      line-height:1.8;
-      font-size:.98rem;
-      font-weight:700;
-    }
+    .feedback{display:none;margin:12px;margin-top:0;border-radius:18px;padding:14px;line-height:1.8;font-size:.96rem;font-weight:800}
     .feedback.show{display:block}
-    .feedback.good{background:#ecfdf5;color:#166534;border:1px solid #a7f3d0}
-    .feedback.bad{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
-    .tip{
-      margin-top:8px;
-      font-weight:600;
-    }
+    .feedback.good{background:#ecfdf5;color:#166534;border:1px solid #86efac}
+    .feedback.bad{background:#fef2f2;color:#991b1b;border:1px solid #fca5a5}
 
-    .actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-    .btn{
-      border:none;
-      border-radius:999px;
-      padding:13px 18px;
-      font-size:1rem;
-      font-weight:800;
-      cursor:pointer;
-      touch-action:manipulation;
-    }
-    .btn-primary{
-      background:linear-gradient(135deg, var(--green), var(--green2));
-      color:#fff;
-      box-shadow:0 10px 24px rgba(34,197,94,.28);
-    }
-    .btn-secondary{
-      background:#e0f2fe;
-      color:#075985;
-    }
-    .btn-ghost{
-      background:#f3f4f6;
-      color:#374151;
-    }
+    .actions{display:flex;gap:10px;flex-wrap:wrap;padding:0 12px 14px}
+    .btn{border:none;border-radius:999px;padding:13px 18px;font-size:1rem;font-weight:900;cursor:pointer;touch-action:manipulation}
+    .btn-primary{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;box-shadow:0 10px 24px rgba(34,197,94,.28)}
+    .btn-next{background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;box-shadow:0 10px 24px rgba(59,130,246,.28)}
+    .btn-line{background:linear-gradient(135deg,#06c755,#00b900);color:#fff;box-shadow:0 10px 24px rgba(6,199,85,.25)}
+    .btn:disabled{opacity:.5;cursor:not-allowed}
 
-    .progress-wrap{
-      margin-top:12px;
-      background:#e5e7eb;
-      border-radius:999px;
-      overflow:hidden;
-      height:14px;
-    }
-    .progress{
-      width:0%;
-      height:100%;
-      background:linear-gradient(90deg,#22c55e,#3b82f6);
-      transition:width .25s ease;
-    }
-
-    .result{
-      display:none;
-      text-align:center;
-    }
+    .result{display:none;text-align:center;background:#fffbeb;border:1px solid #fde68a;margin-top:14px}
     .result.show{display:block}
-    .rank{
-      font-size:1.2rem;
-      font-weight:900;
-      margin-top:4px;
-    }
-    .badge{
-      display:inline-block;
-      margin-top:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      background:#fef3c7;
-      color:#92400e;
-      font-weight:800;
-    }
-    .footer-note{
-      color:#cbd5e1;
-      text-align:center;
-      margin-top:16px;
-      font-size:.9rem;
-      line-height:1.7;
-    }
+    .rank{font-size:1.22rem;font-weight:900;color:#92400e;margin-top:8px}
+    .badge{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:999px;background:#dcfce7;color:#166534;font-weight:900}
+    .small{font-size:.88rem;color:#64748b;line-height:1.7}
+    .footer-note{color:#cbd5e1;text-align:center;margin-top:16px;font-size:.9rem;line-height:1.75}
 
+    @media (max-width:780px){
+      .command-body{grid-template-columns:1fr}
+      .question-pane{border-right:none;border-bottom:1px solid rgba(148,163,184,.2)}
+    }
     @media (max-width:720px){
-      .status{grid-template-columns: repeat(2,1fr)}
-      .wrap{padding:14px 12px 24px}
-      .panel{padding:14px}
-      .question{font-size:1.04rem}
-      .choice{padding:13px 12px}
+      .wrap{padding:12px 10px 24px}
+      .mini-stats{grid-template-columns:repeat(2,1fr)}
+      .actors{gap:8px}
+      .sprite{font-size:3.6rem}
+      .question{font-size:1.04rem;min-height:auto}
+      .battle-log{min-height:auto}
+      .bubble{min-height:78px}
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <section class="hero">
-      <h1>🛡️ 環保勇者冒險：資源回收試煉之路</h1>
-      <p class="subtitle">
-        垃圾魔王讓王國陷入混亂，鋰電池亂丟、農藥罐污染土地、紙餐盒分類失控。
-        你將化身環保勇者，透過一關一關的任務，學會正確的分類流程與特殊回收方式，拯救王國！ ✨
+      <h1>🛡️ 環保勇者冒險</h1>
+      <p class="sub">
+        冒險解題學會正確回收分類
       </p>
       <div class="chips">
-        <span class="chip">🎮 冒險模式初版</span>
+        <span class="chip">🎲 隨機抽題</span>
+        <span class="chip">📚 100題題庫</span>
+        <span class="chip">⚖️ 題型平衡</span>
         <span class="chip">📱 手機可玩</span>
-        <span class="chip">♻️ 流程宣導導向</span>
-        <span class="chip">🧪 含危險物示範題</span>
       </div>
     </section>
 
-    <section class="game">
-      <div class="panel" id="gamePanel">
-        <div class="status">
-          <div class="stat">
-            <div class="label">目前關卡</div>
-            <div class="value" id="stageText">1 / 5</div>
+    <section class="layout">
+      <div class="panel">
+        <div class="battlefield">
+          <div class="stagebar">
+            <div class="stagepill" id="stageText">🗺️ 第 0 題 / 15 題</div>
+            <div class="turntext" id="turnText">準備出發</div>
           </div>
-          <div class="stat">
-            <div class="label">勇者分數</div>
-            <div class="value" id="scoreText">0</div>
-          </div>
-          <div class="stat">
-            <div class="label">答對題數</div>
-            <div class="value" id="correctText">0</div>
-          </div>
-          <div class="stat">
-            <div class="label">通關門檻</div>
-            <div class="value">40 分</div>
-          </div>
-        </div>
 
-        <div class="progress-wrap" aria-label="進度條">
-          <div class="progress" id="progressBar"></div>
-        </div>
-
-        <div id="quizArea">
-          <div class="scene">
-            <div class="scene-title" id="sceneTitle">🌿 新手村試煉</div>
-            <div class="story" id="storyText"></div>
-            <div class="npc" id="npcText"></div>
-
-            <div class="question-box">
-              <span class="q-type" id="typeText">流程任務</span>
-              <div class="question" id="questionText"></div>
-              <div class="choices" id="choicesBox"></div>
-              <div class="feedback" id="feedbackBox"></div>
-              <div class="actions">
-                <button class="btn btn-primary" id="startBtn">開始冒險</button>
-                <button class="btn btn-secondary" id="nextBtn" style="display:none;">前往下一關 ➜</button>
-                <button class="btn btn-ghost" id="restartBtn" style="display:none;">重新挑戰</button>
+          <div class="actors">
+            <div class="actor hero">
+              <div class="sprite">🧝‍♂️</div>
+              <div class="name">環保勇者</div>
+              <div class="hpbox">
+                <div class="barlabel"><span>HP</span><span id="heroHpText">5 / 5</span></div>
+                <div class="hpbar"><div class="hpfill heroHp" id="heroHpBar" style="width:100%"></div></div>
               </div>
+              <div class="bubble" id="heroBubble">準備出發！一起完成 15 題冒險挑戰吧！</div>
+            </div>
+
+            <div class="actor enemy">
+              <div class="sprite" id="sceneIcon">🌿</div>
+              <div class="name" id="sceneName">環境任務</div>
+              <div class="hpbox">
+                <div class="barlabel"><span>任務進度</span><span id="enemyHpText">1 / 1</span></div>
+                <div class="hpbar"><div class="hpfill enemyHp" id="enemyHpBar" style="width:100%"></div></div>
+              </div>
+              <div class="bubble" id="enemyBubble">請仔細閱讀情境，找出最適合的處理方式。</div>
             </div>
           </div>
         </div>
 
-        <div class="result panel" id="resultBox" style="margin-top:14px;">
-          <h2 style="margin:0 0 8px; color:#0f172a;">🎉 冒險結束！</h2>
-          <p id="resultDesc" style="color:#334155; line-height:1.8; margin:0;"></p>
+        <div class="mini-stats">
+          <div class="stat"><div class="label">勇者分數</div><div class="value" id="scoreText">0</div></div>
+          <div class="stat"><div class="label">答對題數</div><div class="value" id="correctText">0</div></div>
+          <div class="stat"><div class="label">剩餘生命</div><div class="value" id="lifeText">5</div></div>
+          <div class="stat"><div class="label">通關門檻</div><div class="value">100 分</div></div>
+        </div>
+
+        <div class="command-shell">
+          <div class="command-top">
+            <div class="rpg-tags">
+              <span class="rpg-tag rpg-green" id="typeTag">冒險說明</span>
+              <span class="rpg-tag rpg-blue" id="areaTag">起始營地</span>
+              <span class="rpg-tag rpg-gold">每題答對 +10 分</span>
+            </div>
+            <div class="battle-log" id="battleLog">
+              <strong>任務提示：</strong> 按下開始後，系統會從 100 題題庫中隨機抽出 15 題，並兼顧危險物、流程判斷與觀念題。每答對 1 題得 10 分，答錯則失去 1 點生命。
+            </div>
+          </div>
+
+          <div class="command-body">
+            <div class="question-pane">
+              <div class="question-title">🗺️ 冒險情境</div>
+              <div class="question" id="questionText">準備好進入資源回收冒險了嗎？</div>
+              <div class="helper-box" id="helperBox">
+                你會在不同場景中遇到需要判斷分類與處理方式的物品。請依情境選出最適合的做法，完成任務並累積分數。
+              </div>
+            </div>
+
+            <div class="command-pane">
+              <div class="command-title">⚡ 請選擇行動</div>
+              <div class="choices" id="choicesBox"></div>
+            </div>
+          </div>
+
+          <div class="feedback" id="feedbackBox"></div>
+
+          <div class="actions">
+            <button class="btn btn-primary" id="startBtn">開始冒險</button>
+            <button class="btn btn-next" id="nextBtn" style="display:none;">前往下一題 ➜</button>
+          </div>
+        </div>
+
+        <div class="panel result" id="resultBox">
+          <h2 style="margin:0 0 8px; color:#92400e;">🏆 挑戰完成！</h2>
+          <p id="resultDesc" style="color:#78350f; line-height:1.85; margin:0;"></p>
           <div class="rank" id="rankText"></div>
           <div class="badge" id="badgeText"></div>
           <div class="actions" style="justify-content:center; margin-top:18px;">
+            <a class="btn btn-line" id="lineBtn" href="#" target="_blank" rel="noopener noreferrer">前往 LINE 抽獎 🎁</a>
             <button class="btn btn-primary" onclick="restartGame()">再玩一次</button>
           </div>
+          <p class="small" style="margin-top:10px;">
+            請將程式中的 <strong>LINE_DRAW_URL</strong> 改成你的 LINE 加好友或抽獎連結。
+          </p>
         </div>
       </div>
     </section>
 
-    <p class="footer-note">
-      這是示範初版，先用 5 關呈現「勇者鬥惡龍式流程冒險」的玩法方向。<br>
-      後續可再擴充為完整題庫、角色立繪、怪物戰鬥、通關 QR Code 與抽獎導流版本。
-    </p>
+    <p class="footer-note">每次遊玩會從題庫隨機抽題，並避免同一輪內重複出題。</p>
   </div>
 
   <script>
-    const stages = [
-      {
-        stage: "🌿 新手村試煉",
-        type: "流程任務",
-        story: "新手村的回收精靈生氣了，因為村民把回收物都亂丟，導致回收祭壇失去光芒。",
-        npc: "🧚 回收精靈：勇者啊，請從最基本的回收前處理開始，讓王國重新恢復秩序！",
-        question: "喝完的寶特瓶，在回收前最適合怎麼做？",
-        choices: [
-          { key: "A", text: "直接投入回收箱" },
-          { key: "B", text: "清洗後壓扁再回收" },
-          { key: "C", text: "裝滿水後再丟掉" }
-        ],
-        answer: "B",
-        tip: "清洗壓扁後再回收，可提升回收品質並節省空間。",
-        score: 10
-      },
-      {
-        stage: "📦 紙類迷宮",
-        type: "分類判斷",
-        story: "你來到紙類迷宮，門口堆滿了各種紙製物。只有判斷正確的人，神殿之門才會打開。",
-        npc: "📜 守門學者：看起來像紙，不一定都能回收。真正的勇者，懂得分辨乾淨與污染。",
-        question: "沾有油污的紙餐盒，應如何處理？",
-        choices: [
-          { key: "A", text: "紙類回收" },
-          { key: "B", text: "一般垃圾" },
-          { key: "C", text: "塑膠回收" }
-        ],
-        answer: "B",
-        tip: "沾油紙餐盒通常不宜回收，應依一般垃圾方式處理。",
-        score: 10
-      },
-      {
-        stage: "⚠️ 危險山谷",
-        type: "特殊回收",
-        story: "山谷裡閃著紅光，一顆顆危險物正在被垃圾魔王操控，若處理錯誤，整座山谷都會爆裂！",
-        npc: "🔥 山谷祭司：這不是普通垃圾！要用正確管道封印它的危險力量。",
-        question: "發熱的鋰電池，最適合怎麼處理？",
-        choices: [
-          { key: "A", text: "丟進一般垃圾桶" },
-          { key: "B", text: "交給指定回收點" },
-          { key: "C", text: "放進廚餘桶" }
-        ],
-        answer: "B",
-        tip: "鋰電池需妥善回收，避免短路、起火或爆炸風險。",
-        score: 10
-      },
-      {
-        stage: "🧪 農地淨化任務",
-        type: "危險容器處理",
-        story: "農地受到污染，一旁散落著用過的農藥罐。若隨意丟棄，土地精靈將無法恢復生機。",
-        npc: "🌾 土地精靈：勇者，請用正確方式處理這些危險容器，別讓污染繼續擴散。",
-        question: "用過的農藥罐，較適合怎麼處理？",
-        choices: [
-          { key: "A", text: "清洗後依規定回收" },
-          { key: "B", text: "直接丟一般垃圾" },
-          { key: "C", text: "埋進土裡" }
-        ],
-        answer: "A",
-        tip: "農藥罐屬特殊容器，應依規定清洗並交付適當回收管道。",
-        score: 10
-      },
-      {
-        stage: "👑 分類神殿最終試煉",
-        type: "流程綜合",
-        story: "分類神殿終於重啟，但最後一道考驗仍未解除。神殿守門人要你證明，你真的懂得安全分類。",
-        npc: "🏛️ 神殿守門人：只差最後一步了。處理危險光源時，千萬不可大意。",
-        question: "廢燈管最適合送往哪裡？",
-        choices: [
-          { key: "A", text: "一般垃圾" },
-          { key: "B", text: "特殊回收點" },
-          { key: "C", text: "廚餘桶" }
-        ],
-        answer: "B",
-        tip: "燈管可能含有害物質，應送交適當回收點妥善處理。",
-        score: 10
-      }
-    ];
+    const LINE_DRAW_URL = "#"; // ← 請改成你的 LINE 抽獎／加好友連結
+    const QUESTION_BANK = [{"id":1,"type":"單選","category":"鋰電池","question":"用過的行動電源應如何處理？","choices":[{"key":"A","text":"一般垃圾"},{"key":"B","text":"資源回收車"},{"key":"C","text":"專門回收點"}],"answer":"C","tip":"鋰電池易起火需專門回收","group":"打擊/炸彈"},{"id":2,"type":"單選","category":"鋰電池","question":"電池可以丟一般垃圾嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"B","tip":"易引發火災","group":"打擊/炸彈"},{"id":3,"type":"單選","category":"瓦斯罐","question":"瓦斯罐丟棄前需？","choices":[{"key":"A","text":"直接丟"},{"key":"B","text":"排空氣體"},{"key":"C","text":"加水"}],"answer":"B","tip":"避免爆炸","group":"打擊/炸彈"},{"id":4,"type":"單選","category":"燈管","question":"廢燈管應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"回收點"},{"key":"C","text":"打破丟"}],"answer":"B","tip":"含汞有毒","group":"打擊/炸彈"},{"id":5,"type":"單選","category":"農藥罐","question":"農藥罐應如何回收？","choices":[{"key":"A","text":"清洗後回收"},{"key":"B","text":"直接丟"},{"key":"C","text":"埋土"}],"answer":"A","tip":"避免污染","group":"打擊/炸彈"},{"id":6,"type":"單選","category":"滅火器","question":"滅火器應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"專業回收"},{"key":"C","text":"丟河"}],"answer":"B","tip":"高壓容器","group":"打擊/炸彈"},{"id":7,"type":"單選","category":"噴霧罐","question":"噴霧罐回收前需？","choices":[{"key":"A","text":"排空"},{"key":"B","text":"直接丟"},{"key":"C","text":"加熱"}],"answer":"A","tip":"避免爆炸","group":"打擊/炸彈"},{"id":8,"type":"單選","category":"電池","question":"電池應回收於？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"垃圾車"},{"key":"C","text":"水溝"}],"answer":"A","tip":"設有回收點","group":"打擊/炸彈"},{"id":9,"type":"單選","category":"油漆罐","question":"油漆罐應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"倒掉"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"特殊處理","group":"打擊/炸彈"},{"id":10,"type":"單選","category":"3C","question":"舊手機應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"含重金屬","group":"打擊/炸彈"},{"id":11,"type":"單選","category":"鋰電池","question":"用過的行動電源應如何處理？","choices":[{"key":"A","text":"一般垃圾"},{"key":"B","text":"資源回收車"},{"key":"C","text":"專門回收點"}],"answer":"C","tip":"鋰電池易起火需專門回收","group":"打擊/炸彈"},{"id":12,"type":"單選","category":"鋰電池","question":"電池可以丟一般垃圾嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"B","tip":"易引發火災","group":"打擊/炸彈"},{"id":13,"type":"單選","category":"瓦斯罐","question":"瓦斯罐丟棄前需？","choices":[{"key":"A","text":"直接丟"},{"key":"B","text":"排空氣體"},{"key":"C","text":"加水"}],"answer":"B","tip":"避免爆炸","group":"打擊/炸彈"},{"id":14,"type":"單選","category":"燈管","question":"廢燈管應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"回收點"},{"key":"C","text":"打破丟"}],"answer":"B","tip":"含汞有毒","group":"打擊/炸彈"},{"id":15,"type":"單選","category":"農藥罐","question":"農藥罐應如何回收？","choices":[{"key":"A","text":"清洗後回收"},{"key":"B","text":"直接丟"},{"key":"C","text":"埋土"}],"answer":"A","tip":"避免污染","group":"打擊/炸彈"},{"id":16,"type":"單選","category":"滅火器","question":"滅火器應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"專業回收"},{"key":"C","text":"丟河"}],"answer":"B","tip":"高壓容器","group":"打擊/炸彈"},{"id":17,"type":"單選","category":"噴霧罐","question":"噴霧罐回收前需？","choices":[{"key":"A","text":"排空"},{"key":"B","text":"直接丟"},{"key":"C","text":"加熱"}],"answer":"A","tip":"避免爆炸","group":"打擊/炸彈"},{"id":18,"type":"單選","category":"電池","question":"電池應回收於？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"垃圾車"},{"key":"C","text":"水溝"}],"answer":"A","tip":"設有回收點","group":"打擊/炸彈"},{"id":19,"type":"單選","category":"油漆罐","question":"油漆罐應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"倒掉"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"特殊處理","group":"打擊/炸彈"},{"id":20,"type":"單選","category":"3C","question":"舊手機應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"含重金屬","group":"打擊/炸彈"},{"id":21,"type":"單選","category":"鋰電池","question":"用過的行動電源應如何處理？","choices":[{"key":"A","text":"一般垃圾"},{"key":"B","text":"資源回收車"},{"key":"C","text":"專門回收點"}],"answer":"C","tip":"鋰電池易起火需專門回收","group":"打擊/炸彈"},{"id":22,"type":"單選","category":"鋰電池","question":"電池可以丟一般垃圾嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"B","tip":"易引發火災","group":"打擊/炸彈"},{"id":23,"type":"單選","category":"瓦斯罐","question":"瓦斯罐丟棄前需？","choices":[{"key":"A","text":"直接丟"},{"key":"B","text":"排空氣體"},{"key":"C","text":"加水"}],"answer":"B","tip":"避免爆炸","group":"打擊/炸彈"},{"id":24,"type":"單選","category":"燈管","question":"廢燈管應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"回收點"},{"key":"C","text":"打破丟"}],"answer":"B","tip":"含汞有毒","group":"打擊/炸彈"},{"id":25,"type":"單選","category":"農藥罐","question":"農藥罐應如何回收？","choices":[{"key":"A","text":"清洗後回收"},{"key":"B","text":"直接丟"},{"key":"C","text":"埋土"}],"answer":"A","tip":"避免污染","group":"打擊/炸彈"},{"id":26,"type":"單選","category":"滅火器","question":"滅火器應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"專業回收"},{"key":"C","text":"丟河"}],"answer":"B","tip":"高壓容器","group":"打擊/炸彈"},{"id":27,"type":"單選","category":"噴霧罐","question":"噴霧罐回收前需？","choices":[{"key":"A","text":"排空"},{"key":"B","text":"直接丟"},{"key":"C","text":"加熱"}],"answer":"A","tip":"避免爆炸","group":"打擊/炸彈"},{"id":28,"type":"單選","category":"電池","question":"電池應回收於？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"垃圾車"},{"key":"C","text":"水溝"}],"answer":"A","tip":"設有回收點","group":"打擊/炸彈"},{"id":29,"type":"單選","category":"油漆罐","question":"油漆罐應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"倒掉"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"特殊處理","group":"打擊/炸彈"},{"id":30,"type":"單選","category":"3C","question":"舊手機應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"含重金屬","group":"打擊/炸彈"},{"id":31,"type":"單選","category":"鋰電池","question":"用過的行動電源應如何處理？","choices":[{"key":"A","text":"一般垃圾"},{"key":"B","text":"資源回收車"},{"key":"C","text":"專門回收點"}],"answer":"C","tip":"鋰電池易起火需專門回收","group":"打擊/炸彈"},{"id":32,"type":"單選","category":"鋰電池","question":"電池可以丟一般垃圾嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"B","tip":"易引發火災","group":"打擊/炸彈"},{"id":33,"type":"單選","category":"瓦斯罐","question":"瓦斯罐丟棄前需？","choices":[{"key":"A","text":"直接丟"},{"key":"B","text":"排空氣體"},{"key":"C","text":"加水"}],"answer":"B","tip":"避免爆炸","group":"打擊/炸彈"},{"id":34,"type":"單選","category":"燈管","question":"廢燈管應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"回收點"},{"key":"C","text":"打破丟"}],"answer":"B","tip":"含汞有毒","group":"打擊/炸彈"},{"id":35,"type":"單選","category":"農藥罐","question":"農藥罐應如何回收？","choices":[{"key":"A","text":"清洗後回收"},{"key":"B","text":"直接丟"},{"key":"C","text":"埋土"}],"answer":"A","tip":"避免污染","group":"打擊/炸彈"},{"id":36,"type":"單選","category":"滅火器","question":"滅火器應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"專業回收"},{"key":"C","text":"丟河"}],"answer":"B","tip":"高壓容器","group":"打擊/炸彈"},{"id":37,"type":"單選","category":"噴霧罐","question":"噴霧罐回收前需？","choices":[{"key":"A","text":"排空"},{"key":"B","text":"直接丟"},{"key":"C","text":"加熱"}],"answer":"A","tip":"避免爆炸","group":"打擊/炸彈"},{"id":38,"type":"單選","category":"電池","question":"電池應回收於？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"垃圾車"},{"key":"C","text":"水溝"}],"answer":"A","tip":"設有回收點","group":"打擊/炸彈"},{"id":39,"type":"單選","category":"油漆罐","question":"油漆罐應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"倒掉"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"特殊處理","group":"打擊/炸彈"},{"id":40,"type":"單選","category":"3C","question":"舊手機應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"含重金屬","group":"打擊/炸彈"},{"id":41,"type":"單選","category":"清潔","question":"寶特瓶回收前需？","choices":[{"key":"A","text":"清洗壓扁"},{"key":"B","text":"直接丟"},{"key":"C","text":"剪碎"}],"answer":"A","tip":"提升回收品質","group":"小學堂/炸彈"},{"id":42,"type":"單選","category":"分類","question":"紙餐盒應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"一般垃圾"},{"key":"C","text":"廚餘"}],"answer":"B","tip":"沾油不可回收","group":"小學堂/炸彈"},{"id":43,"type":"單選","category":"分類","question":"鋁罐應？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"可再利用","group":"小學堂/炸彈"},{"id":44,"type":"單選","category":"分類","question":"玻璃應如何丟棄？","choices":[{"key":"A","text":"包好"},{"key":"B","text":"直接丟"},{"key":"C","text":"丟河"}],"answer":"A","tip":"避免受傷","group":"小學堂/炸彈"},{"id":45,"type":"單選","category":"分類","question":"塑膠袋乾淨可？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"視情況","group":"小學堂/炸彈"},{"id":46,"type":"單選","category":"整理","question":"紙箱回收前需？","choices":[{"key":"A","text":"折疊"},{"key":"B","text":"整箱丟"},{"key":"C","text":"泡水"}],"answer":"A","tip":"節省空間","group":"小學堂/炸彈"},{"id":47,"type":"單選","category":"分類","question":"廚餘應？","choices":[{"key":"A","text":"廚餘桶"},{"key":"B","text":"回收"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"分類處理","group":"小學堂/炸彈"},{"id":48,"type":"單選","category":"清潔","question":"寶特瓶回收前需？","choices":[{"key":"A","text":"清洗壓扁"},{"key":"B","text":"直接丟"},{"key":"C","text":"剪碎"}],"answer":"A","tip":"提升回收品質","group":"小學堂/炸彈"},{"id":49,"type":"單選","category":"分類","question":"紙餐盒應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"一般垃圾"},{"key":"C","text":"廚餘"}],"answer":"B","tip":"沾油不可回收","group":"小學堂/炸彈"},{"id":50,"type":"單選","category":"分類","question":"鋁罐應？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"可再利用","group":"小學堂/炸彈"},{"id":51,"type":"單選","category":"分類","question":"玻璃應如何丟棄？","choices":[{"key":"A","text":"包好"},{"key":"B","text":"直接丟"},{"key":"C","text":"丟河"}],"answer":"A","tip":"避免受傷","group":"小學堂/炸彈"},{"id":52,"type":"單選","category":"分類","question":"塑膠袋乾淨可？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"視情況","group":"小學堂/炸彈"},{"id":53,"type":"單選","category":"整理","question":"紙箱回收前需？","choices":[{"key":"A","text":"折疊"},{"key":"B","text":"整箱丟"},{"key":"C","text":"泡水"}],"answer":"A","tip":"節省空間","group":"小學堂/炸彈"},{"id":54,"type":"單選","category":"分類","question":"廚餘應？","choices":[{"key":"A","text":"廚餘桶"},{"key":"B","text":"回收"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"分類處理","group":"小學堂/炸彈"},{"id":55,"type":"單選","category":"清潔","question":"寶特瓶回收前需？","choices":[{"key":"A","text":"清洗壓扁"},{"key":"B","text":"直接丟"},{"key":"C","text":"剪碎"}],"answer":"A","tip":"提升回收品質","group":"小學堂/炸彈"},{"id":56,"type":"單選","category":"分類","question":"紙餐盒應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"一般垃圾"},{"key":"C","text":"廚餘"}],"answer":"B","tip":"沾油不可回收","group":"小學堂/炸彈"},{"id":57,"type":"單選","category":"分類","question":"鋁罐應？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"可再利用","group":"小學堂/炸彈"},{"id":58,"type":"單選","category":"分類","question":"玻璃應如何丟棄？","choices":[{"key":"A","text":"包好"},{"key":"B","text":"直接丟"},{"key":"C","text":"丟河"}],"answer":"A","tip":"避免受傷","group":"小學堂/炸彈"},{"id":59,"type":"單選","category":"分類","question":"塑膠袋乾淨可？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"視情況","group":"小學堂/炸彈"},{"id":60,"type":"單選","category":"整理","question":"紙箱回收前需？","choices":[{"key":"A","text":"折疊"},{"key":"B","text":"整箱丟"},{"key":"C","text":"泡水"}],"answer":"A","tip":"節省空間","group":"小學堂/炸彈"},{"id":61,"type":"單選","category":"分類","question":"廚餘應？","choices":[{"key":"A","text":"廚餘桶"},{"key":"B","text":"回收"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"分類處理","group":"小學堂/炸彈"},{"id":62,"type":"單選","category":"清潔","question":"寶特瓶回收前需？","choices":[{"key":"A","text":"清洗壓扁"},{"key":"B","text":"直接丟"},{"key":"C","text":"剪碎"}],"answer":"A","tip":"提升回收品質","group":"小學堂/炸彈"},{"id":63,"type":"單選","category":"分類","question":"紙餐盒應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"一般垃圾"},{"key":"C","text":"廚餘"}],"answer":"B","tip":"沾油不可回收","group":"小學堂/炸彈"},{"id":64,"type":"單選","category":"分類","question":"鋁罐應？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"可再利用","group":"小學堂/炸彈"},{"id":65,"type":"單選","category":"分類","question":"玻璃應如何丟棄？","choices":[{"key":"A","text":"包好"},{"key":"B","text":"直接丟"},{"key":"C","text":"丟河"}],"answer":"A","tip":"避免受傷","group":"小學堂/炸彈"},{"id":66,"type":"單選","category":"分類","question":"塑膠袋乾淨可？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"視情況","group":"小學堂/炸彈"},{"id":67,"type":"單選","category":"整理","question":"紙箱回收前需？","choices":[{"key":"A","text":"折疊"},{"key":"B","text":"整箱丟"},{"key":"C","text":"泡水"}],"answer":"A","tip":"節省空間","group":"小學堂/炸彈"},{"id":68,"type":"單選","category":"分類","question":"廚餘應？","choices":[{"key":"A","text":"廚餘桶"},{"key":"B","text":"回收"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"分類處理","group":"小學堂/炸彈"},{"id":69,"type":"單選","category":"清潔","question":"寶特瓶回收前需？","choices":[{"key":"A","text":"清洗壓扁"},{"key":"B","text":"直接丟"},{"key":"C","text":"剪碎"}],"answer":"A","tip":"提升回收品質","group":"小學堂/炸彈"},{"id":70,"type":"單選","category":"分類","question":"紙餐盒應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"一般垃圾"},{"key":"C","text":"廚餘"}],"answer":"B","tip":"沾油不可回收","group":"小學堂/炸彈"},{"id":71,"type":"單選","category":"分類","question":"鋁罐應？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"可再利用","group":"小學堂/炸彈"},{"id":72,"type":"單選","category":"分類","question":"玻璃應如何丟棄？","choices":[{"key":"A","text":"包好"},{"key":"B","text":"直接丟"},{"key":"C","text":"丟河"}],"answer":"A","tip":"避免受傷","group":"小學堂/炸彈"},{"id":73,"type":"單選","category":"分類","question":"塑膠袋乾淨可？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"視情況","group":"小學堂/炸彈"},{"id":74,"type":"單選","category":"整理","question":"紙箱回收前需？","choices":[{"key":"A","text":"折疊"},{"key":"B","text":"整箱丟"},{"key":"C","text":"泡水"}],"answer":"A","tip":"節省空間","group":"小學堂/炸彈"},{"id":75,"type":"單選","category":"分類","question":"廚餘應？","choices":[{"key":"A","text":"廚餘桶"},{"key":"B","text":"回收"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"分類處理","group":"小學堂/炸彈"},{"id":76,"type":"單選","category":"概念","question":"回收的目的是？","choices":[{"key":"A","text":"減少污染"},{"key":"B","text":"增加垃圾"},{"key":"C","text":"沒差"}],"answer":"A","tip":"環保核心","group":"小學堂"},{"id":77,"type":"單選","category":"概念","question":"回收可節省能源嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"A","tip":"減少開採","group":"小學堂"},{"id":78,"type":"單選","category":"管道","question":"電池回收點在哪？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"餐廳"},{"key":"C","text":"公園"}],"answer":"A","tip":"常見設點","group":"小學堂"},{"id":79,"type":"單選","category":"概念","question":"減塑方式？","choices":[{"key":"A","text":"重複使用"},{"key":"B","text":"丟掉"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"減量","group":"小學堂"},{"id":80,"type":"單選","category":"概念","question":"回收需分類嗎？","choices":[{"key":"A","text":"需要"},{"key":"B","text":"不需要"}],"answer":"A","tip":"提升效率","group":"小學堂"},{"id":81,"type":"單選","category":"概念","question":"回收的目的是？","choices":[{"key":"A","text":"減少污染"},{"key":"B","text":"增加垃圾"},{"key":"C","text":"沒差"}],"answer":"A","tip":"環保核心","group":"小學堂"},{"id":82,"type":"單選","category":"概念","question":"回收可節省能源嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"A","tip":"減少開採","group":"小學堂"},{"id":83,"type":"單選","category":"管道","question":"電池回收點在哪？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"餐廳"},{"key":"C","text":"公園"}],"answer":"A","tip":"常見設點","group":"小學堂"},{"id":84,"type":"單選","category":"概念","question":"減塑方式？","choices":[{"key":"A","text":"重複使用"},{"key":"B","text":"丟掉"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"減量","group":"小學堂"},{"id":85,"type":"單選","category":"概念","question":"回收需分類嗎？","choices":[{"key":"A","text":"需要"},{"key":"B","text":"不需要"}],"answer":"A","tip":"提升效率","group":"小學堂"},{"id":86,"type":"單選","category":"概念","question":"回收的目的是？","choices":[{"key":"A","text":"減少污染"},{"key":"B","text":"增加垃圾"},{"key":"C","text":"沒差"}],"answer":"A","tip":"環保核心","group":"小學堂"},{"id":87,"type":"單選","category":"概念","question":"回收可節省能源嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"A","tip":"減少開採","group":"小學堂"},{"id":88,"type":"單選","category":"管道","question":"電池回收點在哪？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"餐廳"},{"key":"C","text":"公園"}],"answer":"A","tip":"常見設點","group":"小學堂"},{"id":89,"type":"單選","category":"概念","question":"減塑方式？","choices":[{"key":"A","text":"重複使用"},{"key":"B","text":"丟掉"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"減量","group":"小學堂"},{"id":90,"type":"單選","category":"概念","question":"回收需分類嗎？","choices":[{"key":"A","text":"需要"},{"key":"B","text":"不需要"}],"answer":"A","tip":"提升效率","group":"小學堂"},{"id":91,"type":"單選","category":"概念","question":"回收的目的是？","choices":[{"key":"A","text":"減少污染"},{"key":"B","text":"增加垃圾"},{"key":"C","text":"沒差"}],"answer":"A","tip":"環保核心","group":"小學堂"},{"id":92,"type":"單選","category":"概念","question":"回收可節省能源嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"A","tip":"減少開採","group":"小學堂"},{"id":93,"type":"單選","category":"管道","question":"電池回收點在哪？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"餐廳"},{"key":"C","text":"公園"}],"answer":"A","tip":"常見設點","group":"小學堂"},{"id":94,"type":"單選","category":"概念","question":"減塑方式？","choices":[{"key":"A","text":"重複使用"},{"key":"B","text":"丟掉"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"減量","group":"小學堂"},{"id":95,"type":"單選","category":"概念","question":"回收需分類嗎？","choices":[{"key":"A","text":"需要"},{"key":"B","text":"不需要"}],"answer":"A","tip":"提升效率","group":"小學堂"},{"id":96,"type":"單選","category":"概念","question":"回收的目的是？","choices":[{"key":"A","text":"減少污染"},{"key":"B","text":"增加垃圾"},{"key":"C","text":"沒差"}],"answer":"A","tip":"環保核心","group":"小學堂"},{"id":97,"type":"單選","category":"概念","question":"回收可節省能源嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"A","tip":"減少開採","group":"小學堂"},{"id":98,"type":"單選","category":"管道","question":"電池回收點在哪？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"餐廳"},{"key":"C","text":"公園"}],"answer":"A","tip":"常見設點","group":"小學堂"},{"id":99,"type":"單選","category":"概念","question":"減塑方式？","choices":[{"key":"A","text":"重複使用"},{"key":"B","text":"丟掉"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"減量","group":"小學堂"},{"id":100,"type":"單選","category":"概念","question":"回收需分類嗎？","choices":[{"key":"A","text":"需要"},{"key":"B","text":"不需要"}],"answer":"A","tip":"提升效率","group":"小學堂"}];
 
+    const sceneMap = {
+      "鋰電池":{area:"危險山谷",icon:"🔋",type:"危險物判斷",hero:"這類物品要特別小心處理。",enemy:"若處理不當，可能造成起火風險。"},
+      "瓦斯罐":{area:"壓力兵工場",icon:"🧯",type:"危險物判斷",hero:"先確認安全步驟，再進行處理。",enemy:"高壓容器若亂丟，可能有危險。"},
+      "燈管":{area:"光源神殿",icon:"💡",type:"特殊回收",hero:"這題關係到特殊光源回收。",enemy:"有些光源不能當一般垃圾處理。"},
+      "農藥罐":{area:"農地淨化區",icon:"🧪",type:"危險容器處理",hero:"處理正確才能避免污染擴散。",enemy:"化學容器可不能隨便亂丟。"},
+      "電池":{area:"能源站",icon:"🔋",type:"特殊回收",hero:"電池回收點很多，但不能亂丟。",enemy:"錯誤處理可能造成安全問題。"},
+      "噴霧罐":{area:"壓力兵工場",icon:"🫧",type:"高壓容器",hero:"回收前先想想是否要排空。",enemy:"殘留壓力可能帶來危險。"},
+      "清潔":{area:"淨化溪谷",icon:"💧",type:"流程判斷",hero:"先做好前處理，回收品質才會更好。",enemy:"髒污殘留會影響後續回收。"},
+      "分類":{area:"分類神殿",icon:"♻️",type:"分類判斷",hero:"只要分對去向，就能順利完成任務。",enemy:"看起來像回收，不一定真的能回收。"},
+      "整理":{area:"整理工坊",icon:"📦",type:"流程判斷",hero:"整理好後再回收，效率更高。",enemy:"空間與分類都需要先處理好。"},
+      "概念":{area:"知識圖書館",icon:"📘",type:"觀念挑戰",hero:"這題考你回收的重要觀念。",enemy:"懂觀念，才會做對行動。"},
+      "管道":{area:"回收驛站",icon:"🏪",type:"回收管道",hero:"找對回收管道很重要。",enemy:"不是所有物品都能直接丟進回收車。"},
+      "3C":{area:"終末科技城",icon:"📱",type:"3C 回收",hero:"3C 含有許多可回收資源。",enemy:"淘汰產品若亂丟，會變成污染源。"},
+      "油漆罐":{area:"塗料工坊",icon:"🎨",type:"特殊回收",hero:"有些容器需特別留意處理方式。",enemy:"殘留物若亂倒，容易造成污染。"},
+      "清潔劑":{area:"生活任務區",icon:"🧴",type:"容器回收",hero:"先確認有沒有清洗完成。",enemy:"殘留內容物會影響回收。"},
+      "預設":{area:"環境任務",icon:"🌿",type:"情境挑戰",hero:"請依情境判斷正確做法。",enemy:"仔細想想，哪個處理方式最適合？"}
+    };
+
+    const skillMap = {
+      "A":"行動一",
+      "B":"行動二",
+      "C":"行動三"
+    };
+    const iconMap = {
+      "A":"🧭",
+      "B":"✨",
+      "C":"🛡️"
+    };
+
+    let sessionQuestions = [];
     let current = -1;
     let score = 0;
     let correctCount = 0;
+    let heroLife = 5;
+    let missionValue = 1;
     let locked = false;
 
     const stageText = document.getElementById("stageText");
+    const turnText = document.getElementById("turnText");
+    const heroBubble = document.getElementById("heroBubble");
+    const enemyBubble = document.getElementById("enemyBubble");
+    const sceneName = document.getElementById("sceneName");
+    const sceneIcon = document.getElementById("sceneIcon");
+    const heroHpText = document.getElementById("heroHpText");
+    const enemyHpText = document.getElementById("enemyHpText");
+    const heroHpBar = document.getElementById("heroHpBar");
+    const enemyHpBar = document.getElementById("enemyHpBar");
+
     const scoreText = document.getElementById("scoreText");
     const correctText = document.getElementById("correctText");
-    const progressBar = document.getElementById("progressBar");
-    const sceneTitle = document.getElementById("sceneTitle");
-    const storyText = document.getElementById("storyText");
-    const npcText = document.getElementById("npcText");
-    const typeText = document.getElementById("typeText");
+    const lifeText = document.getElementById("lifeText");
+    const typeTag = document.getElementById("typeTag");
+    const areaTag = document.getElementById("areaTag");
     const questionText = document.getElementById("questionText");
+    const helperBox = document.getElementById("helperBox");
+    const battleLog = document.getElementById("battleLog");
     const choicesBox = document.getElementById("choicesBox");
     const feedbackBox = document.getElementById("feedbackBox");
     const startBtn = document.getElementById("startBtn");
     const nextBtn = document.getElementById("nextBtn");
-    const restartBtn = document.getElementById("restartBtn");
     const resultBox = document.getElementById("resultBox");
     const resultDesc = document.getElementById("resultDesc");
     const rankText = document.getElementById("rankText");
     const badgeText = document.getElementById("badgeText");
+    const lineBtn = document.getElementById("lineBtn");
 
-    function updateStatus() {
-      stageText.textContent = current < 0 ? `0 / ${stages.length}` : `${current + 1} / ${stages.length}`;
+    function shuffle(arr) {
+      const clone = [...arr];
+      for (let i = clone.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [clone[i], clone[j]] = [clone[j], clone[i]];
+      }
+      return clone;
+    }
+
+    function pickBalancedQuestions() {
+      const pools = {
+        danger: QUESTION_BANK.filter(q => q.group === "打擊/炸彈"),
+        process: QUESTION_BANK.filter(q => q.group === "小學堂/炸彈"),
+        concept: QUESTION_BANK.filter(q => q.group === "小學堂")
+      };
+
+      const picks = [
+        ...shuffle(pools.danger).slice(0, 6),
+        ...shuffle(pools.process).slice(0, 5),
+        ...shuffle(pools.concept).slice(0, 4)
+      ];
+
+      const unique = [];
+      const used = new Set();
+      for (const q of shuffle(picks)) {
+        if (!used.has(q.id)) {
+          unique.push(q);
+          used.add(q.id);
+        }
+      }
+
+      if (unique.length < 15) {
+        for (const q of shuffle(QUESTION_BANK)) {
+          if (!used.has(q.id)) {
+            unique.push(q);
+            used.add(q.id);
+          }
+          if (unique.length >= 15) break;
+        }
+      }
+      return unique.slice(0, 15);
+    }
+
+    function getScene(category) {
+      return sceneMap[category] || sceneMap["預設"];
+    }
+
+    function updateUI() {
       scoreText.textContent = score;
       correctText.textContent = correctCount;
-      const percent = current < 0 ? 0 : ((current) / stages.length) * 100;
-      progressBar.style.width = percent + "%";
+      lifeText.textContent = heroLife;
+      heroHpText.textContent = `${heroLife} / 5`;
+      heroHpBar.style.width = `${(heroLife / 5) * 100}%`;
+      enemyHpText.textContent = `${missionValue} / 1`;
+      enemyHpBar.style.width = `${missionValue * 100}%`;
+      stageText.textContent = current < 0 ? `🗺️ 第 0 題 / 15 題` : `🗺️ 第 ${current + 1} 題 / 15 題`;
     }
 
     function renderIntro() {
-      sceneTitle.textContent = "🗺️ 冒險即將開始";
-      storyText.textContent = "按下開始後，你將依序挑戰 5 個關卡。每答對 1 題可獲得 10 分，累積 40 分以上即可通過試煉。";
-      npcText.textContent = "👑 國王：環保勇者啊，請你用正確分類知識，修復王國的秩序！";
-      typeText.textContent = "冒險說明";
-      questionText.textContent = "準備好踏上資源回收試煉之路了嗎？";
+      sessionQuestions = pickBalancedQuestions();
+      current = -1;
+      score = 0;
+      correctCount = 0;
+      heroLife = 5;
+      missionValue = 1;
+      locked = false;
+
+      turnText.textContent = "準備出發";
+      heroBubble.textContent = "準備出發！一起完成 15 題冒險挑戰吧！";
+      enemyBubble.textContent = "請仔細閱讀情境，找出最適合的處理方式。";
+      sceneName.textContent = "環境任務";
+      sceneIcon.textContent = "🌿";
+
+      typeTag.textContent = "冒險說明";
+      areaTag.textContent = "起始營地";
+      battleLog.innerHTML = `<strong>任務提示：</strong> 本輪已從題庫中隨機抽出 15 題，並自動平衡危險物、流程題與觀念題。`;
+      questionText.textContent = "準備好進入資源回收冒險了嗎？";
+      helperBox.textContent = "你會在不同場景中遇到需要判斷分類與處理方式的物品。請依情境選出最適合的做法，完成任務並累積分數。";
       choicesBox.innerHTML = "";
       feedbackBox.className = "feedback";
       feedbackBox.textContent = "";
       startBtn.style.display = "inline-block";
       nextBtn.style.display = "none";
-      restartBtn.style.display = "none";
       resultBox.classList.remove("show");
-      updateStatus();
+      lineBtn.href = LINE_DRAW_URL;
+      updateUI();
     }
 
-    function renderStage() {
-      const item = stages[current];
+    function renderQuestion() {
+      const q = sessionQuestions[current];
+      const scene = getScene(q.category);
+      missionValue = 1;
       locked = false;
-      sceneTitle.textContent = item.stage;
-      storyText.textContent = item.story;
-      npcText.textContent = item.npc;
-      typeText.textContent = item.type;
-      questionText.textContent = item.question;
-      choicesBox.innerHTML = "";
+
+      turnText.textContent = "任務進行中";
+      heroBubble.textContent = scene.hero;
+      enemyBubble.textContent = scene.enemy;
+      sceneName.textContent = scene.area;
+      sceneIcon.textContent = scene.icon;
+      typeTag.textContent = scene.type;
+      areaTag.textContent = q.category;
+
+      battleLog.innerHTML = `<strong>任務情境：</strong> 你在「${scene.area}」遇到與「${q.category}」有關的處理任務，請做出最合適的選擇。`;
+      questionText.textContent = q.question;
+      helperBox.textContent = q.tip ? `提示：${q.tip}` : "請依情境判斷最適合的分類與處理方式。";
       feedbackBox.className = "feedback";
       feedbackBox.textContent = "";
-      startBtn.style.display = "none";
-      nextBtn.style.display = "none";
-      restartBtn.style.display = "none";
 
-      item.choices.forEach(choice => {
+      choicesBox.innerHTML = "";
+      q.choices.forEach(choice => {
         const btn = document.createElement("button");
         btn.className = "choice";
-        btn.innerHTML = `<strong>${choice.key}.</strong> ${choice.text}`;
-        btn.addEventListener("click", () => selectAnswer(choice.key, btn));
+        btn.innerHTML = `
+          <div class="symbol">${iconMap[choice.key] || "🧭"}</div>
+          <div class="meta">
+            <div class="code">${choice.key}. ${skillMap[choice.key] || "行動選擇"}</div>
+            <div class="label">${choice.text}</div>
+          </div>`;
+        btn.addEventListener("click", () => answer(choice.key, btn));
         choicesBox.appendChild(btn);
       });
 
-      stageText.textContent = `${current + 1} / ${stages.length}`;
-      progressBar.style.width = `${(current / stages.length) * 100}%`;
+      startBtn.style.display = "none";
+      nextBtn.style.display = "none";
+      updateUI();
     }
 
-    function selectAnswer(key, btn) {
+    function answer(key, btn) {
       if (locked) return;
       locked = true;
-      const item = stages[current];
+      const q = sessionQuestions[current];
       const buttons = [...document.querySelectorAll(".choice")];
       buttons.forEach(b => b.disabled = true);
 
-      const correctBtn = buttons.find(b => b.innerText.trim().startsWith(item.answer + "."));
-      if (key === item.answer) {
-        btn.classList.add("correct");
-        score += item.score;
+      const correctIndex = q.choices.findIndex(c => c.key === q.answer);
+      const correctBtn = buttons[correctIndex];
+
+      if (key === q.answer) {
+        missionValue = 0;
+        score += 10;
         correctCount += 1;
+        btn.classList.add("correct");
+        heroBubble.textContent = "處理正確！這項任務已順利完成。";
+        enemyBubble.textContent = "已成功排除這次的環境風險。";
+        battleLog.innerHTML = `<strong>任務結果：</strong> 你做出了正確判斷，成功完成「${q.category}」相關任務。`;
         feedbackBox.className = "feedback show good";
-        feedbackBox.innerHTML = `✅ <strong>答對了！</strong><div class="tip">${item.tip}</div>`;
+        feedbackBox.innerHTML = `✅ <strong>答對了！</strong><br>${q.tip || "已完成本題任務。"}`;
       } else {
+        heroLife = Math.max(0, heroLife - 1);
         btn.classList.add("wrong");
         if (correctBtn) correctBtn.classList.add("correct");
+        heroBubble.textContent = "這次判斷失誤，再仔細想一想。";
+        enemyBubble.textContent = "若處理不當，可能造成環境或安全風險。";
+        battleLog.innerHTML = `<strong>任務結果：</strong> 這次處理方式不夠正確，請記住較適合的做法。`;
         feedbackBox.className = "feedback show bad";
-        feedbackBox.innerHTML = `❌ <strong>這題答錯了。</strong><div class="tip">正確答案是 ${item.answer}。${item.tip}</div>`;
+        feedbackBox.innerHTML = `❌ <strong>答錯了。</strong><br>正確答案是 ${q.answer}。${q.tip || ""}`;
       }
 
-      updateStatus();
+      updateUI();
 
-      if (current < stages.length - 1) {
+      if (heroLife <= 0) {
+        setTimeout(showResult, 350);
+        return;
+      }
+
+      if (current < sessionQuestions.length - 1) {
         nextBtn.style.display = "inline-block";
       } else {
-        restartBtn.style.display = "inline-block";
-        setTimeout(showResult, 450);
+        setTimeout(showResult, 350);
       }
     }
 
-    function nextStage() {
+    function nextQuestion() {
       current += 1;
-      if (current >= stages.length) {
+      if (current >= sessionQuestions.length) {
         showResult();
         return;
       }
-      renderStage();
+      renderQuestion();
     }
 
     function showResult() {
-      progressBar.style.width = "100%";
+      turnText.textContent = "結算完成";
       resultBox.classList.add("show");
+
       let rank = "";
       let badge = "";
-
-      if (score >= 50) {
-        rank = "🏆 傳說級環保勇者";
-        badge = "已成功封印垃圾魔王！";
-      } else if (score >= 40) {
-        rank = "🥇 合格環保勇者";
-        badge = "你已通過資源回收試煉！";
-      } else if (score >= 20) {
-        rank = "🛡️ 見習環保勇者";
-        badge = "再挑戰一次，就能更熟悉分類流程！";
+      if (score >= 130) {
+        rank = "👑 傳說級環保勇者";
+        badge = "表現非常出色，歡迎前往抽獎！";
+      } else if (score >= 100) {
+        rank = "🏆 合格環保勇者";
+        badge = "已達到通關門檻，可前往抽獎！";
+      } else if (score >= 70) {
+        rank = "🛡️ 見習勇者";
+        badge = "再挑戰一次，有機會拿到更高分！";
       } else {
-        rank = "🌱 新手旅人";
-        badge = "先別灰心，王國還在等你成長！";
+        rank = "🌱 冒險新手";
+        badge = "先熟悉更多分類觀念，再來挑戰吧！";
       }
 
-      resultDesc.innerHTML = `你本次共答對 <strong>${correctCount}</strong> 題，獲得 <strong>${score}</strong> 分。<br>這個初版示範已經能呈現「流程題 × 冒險模式」的玩法方向。`;
+      resultDesc.innerHTML = `本次共答對 <strong>${correctCount}</strong> 題，獲得 <strong>${score}</strong> 分，剩餘生命 <strong>${heroLife}</strong> 點。<br>系統已從題庫中隨機抽出 15 題，並平衡不同類型的宣導重點。`;
       rankText.textContent = rank;
       badgeText.textContent = badge;
     }
 
     function restartGame() {
-      current = -1;
-      score = 0;
-      correctCount = 0;
       renderIntro();
     }
 
-    startBtn.addEventListener("click", nextStage);
-    nextBtn.addEventListener("click", nextStage);
-    restartBtn.addEventListener("click", restartGame);
+    function handlePlaceholderLine(e) {
+      if (LINE_DRAW_URL === "#" || !LINE_DRAW_URL) {
+        e.preventDefault();
+        alert("目前尚未設定正式 LINE 抽獎連結喔！\n請把 HTML 程式中的 LINE_DRAW_URL 改成你的 LINE 加好友或抽獎網址。");
+      }
+    }
+
+    startBtn.addEventListener("click", nextQuestion);
+    nextBtn.addEventListener("click", nextQuestion);
+    lineBtn.addEventListener("click", handlePlaceholderLine);
 
     renderIntro();
     window.restartGame = restartGame;
