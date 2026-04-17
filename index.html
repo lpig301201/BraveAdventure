@@ -512,305 +512,242 @@ h1{
     <p class="footer-note">每次遊玩會從題庫隨機抽題，並避免同一輪內重複出題。</p>
   </div>
 
-  <script>
-    const LINE_DRAW_URL = "#"; // ← 請改成你的 LINE 抽獎／加好友連結
-    const QUESTION_BANK = [{"id":1,"type":"單選","category":"鋰電池","question":"用過的行動電源應如何處理？","choices":[{"key":"A","text":"一般垃圾"},{"key":"B","text":"資源回收車"},{"key":"C","text":"專門回收點"}],"answer":"C","tip":"鋰電池易起火需專門回收","group":"打擊/炸彈"},{"id":2,"type":"單選","category":"鋰電池","question":"電池可以丟一般垃圾嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"B","tip":"易引發火災","group":"打擊/炸彈"},{"id":3,"type":"單選","category":"瓦斯罐","question":"瓦斯罐丟棄前需？","choices":[{"key":"A","text":"直接丟"},{"key":"B","text":"排空氣體"},{"key":"C","text":"加水"}],"answer":"B","tip":"避免爆炸","group":"打擊/炸彈"},{"id":4,"type":"單選","category":"燈管","question":"廢燈管應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"回收點"},{"key":"C","text":"打破丟"}],"answer":"B","tip":"含汞有毒","group":"打擊/炸彈"},{"id":5,"type":"單選","category":"農藥罐","question":"農藥罐應如何回收？","choices":[{"key":"A","text":"清洗後回收"},{"key":"B","text":"直接丟"},{"key":"C","text":"埋土"}],"answer":"A","tip":"避免污染","group":"打擊/炸彈"},{"id":6,"type":"單選","category":"滅火器","question":"滅火器應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"專業回收"},{"key":"C","text":"丟河"}],"answer":"B","tip":"高壓容器","group":"打擊/炸彈"},{"id":7,"type":"單選","category":"噴霧罐","question":"噴霧罐回收前需？","choices":[{"key":"A","text":"排空"},{"key":"B","text":"直接丟"},{"key":"C","text":"加熱"}],"answer":"A","tip":"避免爆炸","group":"打擊/炸彈"},{"id":8,"type":"單選","category":"電池","question":"電池應回收於？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"垃圾車"},{"key":"C","text":"水溝"}],"answer":"A","tip":"設有回收點","group":"打擊/炸彈"},{"id":9,"type":"單選","category":"油漆罐","question":"油漆罐應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"倒掉"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"特殊處理","group":"打擊/炸彈"},{"id":10,"type":"單選","category":"3C","question":"舊手機應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"含重金屬","group":"打擊/炸彈"},{"id":11,"type":"單選","category":"鋰電池","question":"用過的行動電源應如何處理？","choices":[{"key":"A","text":"一般垃圾"},{"key":"B","text":"資源回收車"},{"key":"C","text":"專門回收點"}],"answer":"C","tip":"鋰電池易起火需專門回收","group":"打擊/炸彈"},{"id":12,"type":"單選","category":"鋰電池","question":"電池可以丟一般垃圾嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"B","tip":"易引發火災","group":"打擊/炸彈"},{"id":13,"type":"單選","category":"瓦斯罐","question":"瓦斯罐丟棄前需？","choices":[{"key":"A","text":"直接丟"},{"key":"B","text":"排空氣體"},{"key":"C","text":"加水"}],"answer":"B","tip":"避免爆炸","group":"打擊/炸彈"},{"id":14,"type":"單選","category":"燈管","question":"廢燈管應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"回收點"},{"key":"C","text":"打破丟"}],"answer":"B","tip":"含汞有毒","group":"打擊/炸彈"},{"id":15,"type":"單選","category":"農藥罐","question":"農藥罐應如何回收？","choices":[{"key":"A","text":"清洗後回收"},{"key":"B","text":"直接丟"},{"key":"C","text":"埋土"}],"answer":"A","tip":"避免污染","group":"打擊/炸彈"},{"id":16,"type":"單選","category":"滅火器","question":"滅火器應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"專業回收"},{"key":"C","text":"丟河"}],"answer":"B","tip":"高壓容器","group":"打擊/炸彈"},{"id":17,"type":"單選","category":"噴霧罐","question":"噴霧罐回收前需？","choices":[{"key":"A","text":"排空"},{"key":"B","text":"直接丟"},{"key":"C","text":"加熱"}],"answer":"A","tip":"避免爆炸","group":"打擊/炸彈"},{"id":18,"type":"單選","category":"電池","question":"電池應回收於？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"垃圾車"},{"key":"C","text":"水溝"}],"answer":"A","tip":"設有回收點","group":"打擊/炸彈"},{"id":19,"type":"單選","category":"油漆罐","question":"油漆罐應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"倒掉"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"特殊處理","group":"打擊/炸彈"},{"id":20,"type":"單選","category":"3C","question":"舊手機應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"含重金屬","group":"打擊/炸彈"},{"id":21,"type":"單選","category":"鋰電池","question":"用過的行動電源應如何處理？","choices":[{"key":"A","text":"一般垃圾"},{"key":"B","text":"資源回收車"},{"key":"C","text":"專門回收點"}],"answer":"C","tip":"鋰電池易起火需專門回收","group":"打擊/炸彈"},{"id":22,"type":"單選","category":"鋰電池","question":"電池可以丟一般垃圾嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"B","tip":"易引發火災","group":"打擊/炸彈"},{"id":23,"type":"單選","category":"瓦斯罐","question":"瓦斯罐丟棄前需？","choices":[{"key":"A","text":"直接丟"},{"key":"B","text":"排空氣體"},{"key":"C","text":"加水"}],"answer":"B","tip":"避免爆炸","group":"打擊/炸彈"},{"id":24,"type":"單選","category":"燈管","question":"廢燈管應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"回收點"},{"key":"C","text":"打破丟"}],"answer":"B","tip":"含汞有毒","group":"打擊/炸彈"},{"id":25,"type":"單選","category":"農藥罐","question":"農藥罐應如何回收？","choices":[{"key":"A","text":"清洗後回收"},{"key":"B","text":"直接丟"},{"key":"C","text":"埋土"}],"answer":"A","tip":"避免污染","group":"打擊/炸彈"},{"id":26,"type":"單選","category":"滅火器","question":"滅火器應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"專業回收"},{"key":"C","text":"丟河"}],"answer":"B","tip":"高壓容器","group":"打擊/炸彈"},{"id":27,"type":"單選","category":"噴霧罐","question":"噴霧罐回收前需？","choices":[{"key":"A","text":"排空"},{"key":"B","text":"直接丟"},{"key":"C","text":"加熱"}],"answer":"A","tip":"避免爆炸","group":"打擊/炸彈"},{"id":28,"type":"單選","category":"電池","question":"電池應回收於？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"垃圾車"},{"key":"C","text":"水溝"}],"answer":"A","tip":"設有回收點","group":"打擊/炸彈"},{"id":29,"type":"單選","category":"油漆罐","question":"油漆罐應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"倒掉"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"特殊處理","group":"打擊/炸彈"},{"id":30,"type":"單選","category":"3C","question":"舊手機應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"含重金屬","group":"打擊/炸彈"},{"id":31,"type":"單選","category":"鋰電池","question":"用過的行動電源應如何處理？","choices":[{"key":"A","text":"一般垃圾"},{"key":"B","text":"資源回收車"},{"key":"C","text":"專門回收點"}],"answer":"C","tip":"鋰電池易起火需專門回收","group":"打擊/炸彈"},{"id":32,"type":"單選","category":"鋰電池","question":"電池可以丟一般垃圾嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"B","tip":"易引發火災","group":"打擊/炸彈"},{"id":33,"type":"單選","category":"瓦斯罐","question":"瓦斯罐丟棄前需？","choices":[{"key":"A","text":"直接丟"},{"key":"B","text":"排空氣體"},{"key":"C","text":"加水"}],"answer":"B","tip":"避免爆炸","group":"打擊/炸彈"},{"id":34,"type":"單選","category":"燈管","question":"廢燈管應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"回收點"},{"key":"C","text":"打破丟"}],"answer":"B","tip":"含汞有毒","group":"打擊/炸彈"},{"id":35,"type":"單選","category":"農藥罐","question":"農藥罐應如何回收？","choices":[{"key":"A","text":"清洗後回收"},{"key":"B","text":"直接丟"},{"key":"C","text":"埋土"}],"answer":"A","tip":"避免污染","group":"打擊/炸彈"},{"id":36,"type":"單選","category":"滅火器","question":"滅火器應如何處理？","choices":[{"key":"A","text":"垃圾"},{"key":"B","text":"專業回收"},{"key":"C","text":"丟河"}],"answer":"B","tip":"高壓容器","group":"打擊/炸彈"},{"id":37,"type":"單選","category":"噴霧罐","question":"噴霧罐回收前需？","choices":[{"key":"A","text":"排空"},{"key":"B","text":"直接丟"},{"key":"C","text":"加熱"}],"answer":"A","tip":"避免爆炸","group":"打擊/炸彈"},{"id":38,"type":"單選","category":"電池","question":"電池應回收於？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"垃圾車"},{"key":"C","text":"水溝"}],"answer":"A","tip":"設有回收點","group":"打擊/炸彈"},{"id":39,"type":"單選","category":"油漆罐","question":"油漆罐應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"倒掉"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"特殊處理","group":"打擊/炸彈"},{"id":40,"type":"單選","category":"3C","question":"舊手機應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"含重金屬","group":"打擊/炸彈"},{"id":41,"type":"單選","category":"清潔","question":"寶特瓶回收前需？","choices":[{"key":"A","text":"清洗壓扁"},{"key":"B","text":"直接丟"},{"key":"C","text":"剪碎"}],"answer":"A","tip":"提升回收品質","group":"小學堂/炸彈"},{"id":42,"type":"單選","category":"分類","question":"紙餐盒應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"一般垃圾"},{"key":"C","text":"廚餘"}],"answer":"B","tip":"沾油不可回收","group":"小學堂/炸彈"},{"id":43,"type":"單選","category":"分類","question":"鋁罐應？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"可再利用","group":"小學堂/炸彈"},{"id":44,"type":"單選","category":"分類","question":"玻璃應如何丟棄？","choices":[{"key":"A","text":"包好"},{"key":"B","text":"直接丟"},{"key":"C","text":"丟河"}],"answer":"A","tip":"避免受傷","group":"小學堂/炸彈"},{"id":45,"type":"單選","category":"分類","question":"塑膠袋乾淨可？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"視情況","group":"小學堂/炸彈"},{"id":46,"type":"單選","category":"整理","question":"紙箱回收前需？","choices":[{"key":"A","text":"折疊"},{"key":"B","text":"整箱丟"},{"key":"C","text":"泡水"}],"answer":"A","tip":"節省空間","group":"小學堂/炸彈"},{"id":47,"type":"單選","category":"分類","question":"廚餘應？","choices":[{"key":"A","text":"廚餘桶"},{"key":"B","text":"回收"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"分類處理","group":"小學堂/炸彈"},{"id":48,"type":"單選","category":"清潔","question":"寶特瓶回收前需？","choices":[{"key":"A","text":"清洗壓扁"},{"key":"B","text":"直接丟"},{"key":"C","text":"剪碎"}],"answer":"A","tip":"提升回收品質","group":"小學堂/炸彈"},{"id":49,"type":"單選","category":"分類","question":"紙餐盒應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"一般垃圾"},{"key":"C","text":"廚餘"}],"answer":"B","tip":"沾油不可回收","group":"小學堂/炸彈"},{"id":50,"type":"單選","category":"分類","question":"鋁罐應？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"可再利用","group":"小學堂/炸彈"},{"id":51,"type":"單選","category":"分類","question":"玻璃應如何丟棄？","choices":[{"key":"A","text":"包好"},{"key":"B","text":"直接丟"},{"key":"C","text":"丟河"}],"answer":"A","tip":"避免受傷","group":"小學堂/炸彈"},{"id":52,"type":"單選","category":"分類","question":"塑膠袋乾淨可？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"視情況","group":"小學堂/炸彈"},{"id":53,"type":"單選","category":"整理","question":"紙箱回收前需？","choices":[{"key":"A","text":"折疊"},{"key":"B","text":"整箱丟"},{"key":"C","text":"泡水"}],"answer":"A","tip":"節省空間","group":"小學堂/炸彈"},{"id":54,"type":"單選","category":"分類","question":"廚餘應？","choices":[{"key":"A","text":"廚餘桶"},{"key":"B","text":"回收"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"分類處理","group":"小學堂/炸彈"},{"id":55,"type":"單選","category":"清潔","question":"寶特瓶回收前需？","choices":[{"key":"A","text":"清洗壓扁"},{"key":"B","text":"直接丟"},{"key":"C","text":"剪碎"}],"answer":"A","tip":"提升回收品質","group":"小學堂/炸彈"},{"id":56,"type":"單選","category":"分類","question":"紙餐盒應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"一般垃圾"},{"key":"C","text":"廚餘"}],"answer":"B","tip":"沾油不可回收","group":"小學堂/炸彈"},{"id":57,"type":"單選","category":"分類","question":"鋁罐應？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"可再利用","group":"小學堂/炸彈"},{"id":58,"type":"單選","category":"分類","question":"玻璃應如何丟棄？","choices":[{"key":"A","text":"包好"},{"key":"B","text":"直接丟"},{"key":"C","text":"丟河"}],"answer":"A","tip":"避免受傷","group":"小學堂/炸彈"},{"id":59,"type":"單選","category":"分類","question":"塑膠袋乾淨可？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"視情況","group":"小學堂/炸彈"},{"id":60,"type":"單選","category":"整理","question":"紙箱回收前需？","choices":[{"key":"A","text":"折疊"},{"key":"B","text":"整箱丟"},{"key":"C","text":"泡水"}],"answer":"A","tip":"節省空間","group":"小學堂/炸彈"},{"id":61,"type":"單選","category":"分類","question":"廚餘應？","choices":[{"key":"A","text":"廚餘桶"},{"key":"B","text":"回收"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"分類處理","group":"小學堂/炸彈"},{"id":62,"type":"單選","category":"清潔","question":"寶特瓶回收前需？","choices":[{"key":"A","text":"清洗壓扁"},{"key":"B","text":"直接丟"},{"key":"C","text":"剪碎"}],"answer":"A","tip":"提升回收品質","group":"小學堂/炸彈"},{"id":63,"type":"單選","category":"分類","question":"紙餐盒應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"一般垃圾"},{"key":"C","text":"廚餘"}],"answer":"B","tip":"沾油不可回收","group":"小學堂/炸彈"},{"id":64,"type":"單選","category":"分類","question":"鋁罐應？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"可再利用","group":"小學堂/炸彈"},{"id":65,"type":"單選","category":"分類","question":"玻璃應如何丟棄？","choices":[{"key":"A","text":"包好"},{"key":"B","text":"直接丟"},{"key":"C","text":"丟河"}],"answer":"A","tip":"避免受傷","group":"小學堂/炸彈"},{"id":66,"type":"單選","category":"分類","question":"塑膠袋乾淨可？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"視情況","group":"小學堂/炸彈"},{"id":67,"type":"單選","category":"整理","question":"紙箱回收前需？","choices":[{"key":"A","text":"折疊"},{"key":"B","text":"整箱丟"},{"key":"C","text":"泡水"}],"answer":"A","tip":"節省空間","group":"小學堂/炸彈"},{"id":68,"type":"單選","category":"分類","question":"廚餘應？","choices":[{"key":"A","text":"廚餘桶"},{"key":"B","text":"回收"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"分類處理","group":"小學堂/炸彈"},{"id":69,"type":"單選","category":"清潔","question":"寶特瓶回收前需？","choices":[{"key":"A","text":"清洗壓扁"},{"key":"B","text":"直接丟"},{"key":"C","text":"剪碎"}],"answer":"A","tip":"提升回收品質","group":"小學堂/炸彈"},{"id":70,"type":"單選","category":"分類","question":"紙餐盒應如何處理？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"一般垃圾"},{"key":"C","text":"廚餘"}],"answer":"B","tip":"沾油不可回收","group":"小學堂/炸彈"},{"id":71,"type":"單選","category":"分類","question":"鋁罐應？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"可再利用","group":"小學堂/炸彈"},{"id":72,"type":"單選","category":"分類","question":"玻璃應如何丟棄？","choices":[{"key":"A","text":"包好"},{"key":"B","text":"直接丟"},{"key":"C","text":"丟河"}],"answer":"A","tip":"避免受傷","group":"小學堂/炸彈"},{"id":73,"type":"單選","category":"分類","question":"塑膠袋乾淨可？","choices":[{"key":"A","text":"回收"},{"key":"B","text":"垃圾"},{"key":"C","text":"廚餘"}],"answer":"A","tip":"視情況","group":"小學堂/炸彈"},{"id":74,"type":"單選","category":"整理","question":"紙箱回收前需？","choices":[{"key":"A","text":"折疊"},{"key":"B","text":"整箱丟"},{"key":"C","text":"泡水"}],"answer":"A","tip":"節省空間","group":"小學堂/炸彈"},{"id":75,"type":"單選","category":"分類","question":"廚餘應？","choices":[{"key":"A","text":"廚餘桶"},{"key":"B","text":"回收"},{"key":"C","text":"垃圾"}],"answer":"A","tip":"分類處理","group":"小學堂/炸彈"},{"id":76,"type":"單選","category":"概念","question":"回收的目的是？","choices":[{"key":"A","text":"減少污染"},{"key":"B","text":"增加垃圾"},{"key":"C","text":"沒差"}],"answer":"A","tip":"環保核心","group":"小學堂"},{"id":77,"type":"單選","category":"概念","question":"回收可節省能源嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"A","tip":"減少開採","group":"小學堂"},{"id":78,"type":"單選","category":"管道","question":"電池回收點在哪？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"餐廳"},{"key":"C","text":"公園"}],"answer":"A","tip":"常見設點","group":"小學堂"},{"id":79,"type":"單選","category":"概念","question":"減塑方式？","choices":[{"key":"A","text":"重複使用"},{"key":"B","text":"丟掉"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"減量","group":"小學堂"},{"id":80,"type":"單選","category":"概念","question":"回收需分類嗎？","choices":[{"key":"A","text":"需要"},{"key":"B","text":"不需要"}],"answer":"A","tip":"提升效率","group":"小學堂"},{"id":81,"type":"單選","category":"概念","question":"回收的目的是？","choices":[{"key":"A","text":"減少污染"},{"key":"B","text":"增加垃圾"},{"key":"C","text":"沒差"}],"answer":"A","tip":"環保核心","group":"小學堂"},{"id":82,"type":"單選","category":"概念","question":"回收可節省能源嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"A","tip":"減少開採","group":"小學堂"},{"id":83,"type":"單選","category":"管道","question":"電池回收點在哪？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"餐廳"},{"key":"C","text":"公園"}],"answer":"A","tip":"常見設點","group":"小學堂"},{"id":84,"type":"單選","category":"概念","question":"減塑方式？","choices":[{"key":"A","text":"重複使用"},{"key":"B","text":"丟掉"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"減量","group":"小學堂"},{"id":85,"type":"單選","category":"概念","question":"回收需分類嗎？","choices":[{"key":"A","text":"需要"},{"key":"B","text":"不需要"}],"answer":"A","tip":"提升效率","group":"小學堂"},{"id":86,"type":"單選","category":"概念","question":"回收的目的是？","choices":[{"key":"A","text":"減少污染"},{"key":"B","text":"增加垃圾"},{"key":"C","text":"沒差"}],"answer":"A","tip":"環保核心","group":"小學堂"},{"id":87,"type":"單選","category":"概念","question":"回收可節省能源嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"A","tip":"減少開採","group":"小學堂"},{"id":88,"type":"單選","category":"管道","question":"電池回收點在哪？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"餐廳"},{"key":"C","text":"公園"}],"answer":"A","tip":"常見設點","group":"小學堂"},{"id":89,"type":"單選","category":"概念","question":"減塑方式？","choices":[{"key":"A","text":"重複使用"},{"key":"B","text":"丟掉"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"減量","group":"小學堂"},{"id":90,"type":"單選","category":"概念","question":"回收需分類嗎？","choices":[{"key":"A","text":"需要"},{"key":"B","text":"不需要"}],"answer":"A","tip":"提升效率","group":"小學堂"},{"id":91,"type":"單選","category":"概念","question":"回收的目的是？","choices":[{"key":"A","text":"減少污染"},{"key":"B","text":"增加垃圾"},{"key":"C","text":"沒差"}],"answer":"A","tip":"環保核心","group":"小學堂"},{"id":92,"type":"單選","category":"概念","question":"回收可節省能源嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"A","tip":"減少開採","group":"小學堂"},{"id":93,"type":"單選","category":"管道","question":"電池回收點在哪？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"餐廳"},{"key":"C","text":"公園"}],"answer":"A","tip":"常見設點","group":"小學堂"},{"id":94,"type":"單選","category":"概念","question":"減塑方式？","choices":[{"key":"A","text":"重複使用"},{"key":"B","text":"丟掉"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"減量","group":"小學堂"},{"id":95,"type":"單選","category":"概念","question":"回收需分類嗎？","choices":[{"key":"A","text":"需要"},{"key":"B","text":"不需要"}],"answer":"A","tip":"提升效率","group":"小學堂"},{"id":96,"type":"單選","category":"概念","question":"回收的目的是？","choices":[{"key":"A","text":"減少污染"},{"key":"B","text":"增加垃圾"},{"key":"C","text":"沒差"}],"answer":"A","tip":"環保核心","group":"小學堂"},{"id":97,"type":"單選","category":"概念","question":"回收可節省能源嗎？","choices":[{"key":"A","text":"可以"},{"key":"B","text":"不可以"}],"answer":"A","tip":"減少開採","group":"小學堂"},{"id":98,"type":"單選","category":"管道","question":"電池回收點在哪？","choices":[{"key":"A","text":"超商"},{"key":"B","text":"餐廳"},{"key":"C","text":"公園"}],"answer":"A","tip":"常見設點","group":"小學堂"},{"id":99,"type":"單選","category":"概念","question":"減塑方式？","choices":[{"key":"A","text":"重複使用"},{"key":"B","text":"丟掉"},{"key":"C","text":"焚燒"}],"answer":"A","tip":"減量","group":"小學堂"},{"id":100,"type":"單選","category":"概念","question":"回收需分類嗎？","choices":[{"key":"A","text":"需要"},{"key":"B","text":"不需要"}],"answer":"A","tip":"提升效率","group":"小學堂"}];
+  
+<script>
+  const LINE_DRAW_URL = "#";
 
-    const sceneMap = {
-      "鋰電池":{area:"危險山谷",icon:"🔋",type:"危險物判斷",hero:"這類物品要特別小心處理。",enemy:"若處理不當，可能造成起火風險。"},
-      "瓦斯罐":{area:"壓力兵工場",icon:"🧯",type:"危險物判斷",hero:"先確認安全步驟，再進行處理。",enemy:"高壓容器若亂丟，可能有危險。"},
-      "燈管":{area:"光源神殿",icon:"💡",type:"特殊回收",hero:"這題關係到特殊光源回收。",enemy:"有些光源不能當一般垃圾處理。"},
-      "農藥罐":{area:"農地淨化區",icon:"🧪",type:"危險容器處理",hero:"處理正確才能避免污染擴散。",enemy:"化學容器可不能隨便亂丟。"},
-      "電池":{area:"能源站",icon:"🔋",type:"特殊回收",hero:"電池回收點很多，但不能亂丟。",enemy:"錯誤處理可能造成安全問題。"},
-      "噴霧罐":{area:"壓力兵工場",icon:"🫧",type:"高壓容器",hero:"回收前先想想是否要排空。",enemy:"殘留壓力可能帶來危險。"},
-      "清潔":{area:"淨化溪谷",icon:"💧",type:"流程判斷",hero:"先做好前處理，回收品質才會更好。",enemy:"髒污殘留會影響後續回收。"},
-      "分類":{area:"分類神殿",icon:"♻️",type:"分類判斷",hero:"只要分對去向，就能順利完成任務。",enemy:"看起來像回收，不一定真的能回收。"},
-      "整理":{area:"整理工坊",icon:"📦",type:"流程判斷",hero:"整理好後再回收，效率更高。",enemy:"空間與分類都需要先處理好。"},
-      "概念":{area:"知識圖書館",icon:"📘",type:"觀念挑戰",hero:"這題考你回收的重要觀念。",enemy:"懂觀念，才會做對行動。"},
-      "管道":{area:"回收驛站",icon:"🏪",type:"回收管道",hero:"找對回收管道很重要。",enemy:"不是所有物品都能直接丟進回收車。"},
-      "3C":{area:"終末科技城",icon:"📱",type:"3C 回收",hero:"3C 含有許多可回收資源。",enemy:"淘汰產品若亂丟，會變成污染源。"},
-      "油漆罐":{area:"塗料工坊",icon:"🎨",type:"特殊回收",hero:"有些容器需特別留意處理方式。",enemy:"殘留物若亂倒，容易造成污染。"},
-      "清潔劑":{area:"生活任務區",icon:"🧴",type:"容器回收",hero:"先確認有沒有清洗完成。",enemy:"殘留內容物會影響回收。"},
-      "預設":{area:"環境任務",icon:"🌿",type:"情境挑戰",hero:"請依情境判斷正確做法。",enemy:"仔細想想，哪個處理方式最適合？"}
-    };
+  const FIXED_STAGES = [{"stageTitle": "第一關｜油污危機", "area": "便當村", "type": "油污判斷", "icon": "🍱", "hero": "先判斷這個紙餐盒是否受到油污影響。", "enemy": "油污是紙餐盒回收最常見的陷阱。", "question": "紙餐盒沾滿油污應如何處理？", "choices": [{"key": "A", "text": "紙類回收"}, {"key": "B", "text": "一般垃圾"}, {"key": "C", "text": "沖水後回收"}], "answer": "B", "tip": "油污會影響回收品質"}, {"stageTitle": "第二關｜清潔試煉", "area": "清潔工坊", "type": "流程", "icon": "🧽", "hero": "回收前的前處理，是勇者的基本功。", "enemy": "沒先清理乾淨，後續回收就會受影響。", "question": "回收前第一步？", "choices": [{"key": "A", "text": "直接丟"}, {"key": "B", "text": "清除殘渣"}, {"key": "C", "text": "壓扁"}], "answer": "B", "tip": "需先清除殘渣"}, {"stageTitle": "第三關｜分類判斷", "area": "分類神殿", "type": "分類", "icon": "♻️", "hero": "分對去向，才是真正完成任務。", "enemy": "看起來像紙，不一定都能回收。", "question": "乾淨紙餐盒應？", "choices": [{"key": "A", "text": "垃圾"}, {"key": "B", "text": "紙類回收"}, {"key": "C", "text": "塑膠"}], "answer": "B", "tip": "乾淨可回收"}, {"stageTitle": "第四關｜進階挑戰", "area": "外送站", "type": "判斷", "icon": "🛵", "hero": "這題要看實際污染程度，不能一概而論。", "enemy": "外送餐盒最容易讓人誤判。", "question": "少量油漬？", "choices": [{"key": "A", "text": "直接回收"}, {"key": "B", "text": "清潔後回收"}, {"key": "C", "text": "丟垃圾"}], "answer": "B", "tip": "依污染判斷"}, {"stageTitle": "第五關｜觀念試煉", "area": "圖書館", "type": "觀念", "icon": "📘", "hero": "真正的勇者，也會理解背後原因。", "enemy": "知道為什麼，才記得更久。", "question": "油污不可回收原因？", "choices": [{"key": "A", "text": "太重"}, {"key": "B", "text": "影響品質"}, {"key": "C", "text": "沒價值"}], "answer": "B", "tip": "影響回收品質"}, {"stageTitle": "第六關｜分離任務", "area": "分類站", "type": "流程", "icon": "♻️", "hero": "分對去向，才是真正完成任務。", "enemy": "看起來像紙，不一定都能回收。", "question": "餐盒與塑膠蓋應？", "choices": [{"key": "A", "text": "一起回收"}, {"key": "B", "text": "分開處理"}, {"key": "C", "text": "丟垃圾"}], "answer": "B", "tip": "材質不同"}, {"stageTitle": "第七關｜殘渣挑戰", "area": "廚餘區", "type": "流程", "icon": "🍱", "hero": "請仔細判斷紙餐盒的處理方式。", "enemy": "紙餐盒看似簡單，其實很容易分錯。", "question": "餐盒有飯粒應？", "choices": [{"key": "A", "text": "直接回收"}, {"key": "B", "text": "清掉再回收"}, {"key": "C", "text": "丟垃圾"}], "answer": "B", "tip": "避免污染"}, {"stageTitle": "第八關｜湯汁危機", "area": "外送站", "type": "判斷", "icon": "🛵", "hero": "這題要看實際污染程度，不能一概而論。", "enemy": "外送餐盒最容易讓人誤判。", "question": "裝湯紙盒應？", "choices": [{"key": "A", "text": "回收"}, {"key": "B", "text": "垃圾"}, {"key": "C", "text": "晾乾回收"}], "answer": "B", "tip": "污染嚴重"}, {"stageTitle": "第九關｜壓縮任務", "area": "整理站", "type": "流程", "icon": "📦", "hero": "整理與壓縮，也是一種環保能力。", "enemy": "處理得宜，回收效率更高。", "question": "紙盒需壓扁嗎？", "choices": [{"key": "A", "text": "一定要"}, {"key": "B", "text": "不用"}, {"key": "C", "text": "視情況"}], "answer": "C", "tip": "依狀況處理"}, {"stageTitle": "第十關｜乾燥任務", "area": "乾燥區", "type": "流程", "icon": "☀️", "hero": "保持乾燥，有助於後續回收。", "enemy": "潮濕會讓回收品質下降。", "question": "回收前需乾燥嗎？", "choices": [{"key": "A", "text": "需要"}, {"key": "B", "text": "不用"}, {"key": "C", "text": "隨意"}], "answer": "A", "tip": "避免潮濕"}, {"stageTitle": "第十一關｜材質挑戰", "area": "實驗室", "type": "觀念", "icon": "📘", "hero": "真正的勇者，也會理解背後原因。", "enemy": "知道為什麼，才記得更久。", "question": "紙餐盒有淋膜？", "choices": [{"key": "A", "text": "不能回收"}, {"key": "B", "text": "可回收依規定"}, {"key": "C", "text": "丟垃圾"}], "answer": "B", "tip": "依規範"}, {"stageTitle": "第十二關｜夜市任務", "area": "夜市", "type": "情境", "icon": "🍢", "hero": "夜市常見的油污紙盒，要特別留意。", "enemy": "油炸食物留下的油脂會影響回收。", "question": "雞排盒油多？", "choices": [{"key": "A", "text": "回收"}, {"key": "B", "text": "垃圾"}, {"key": "C", "text": "洗後回收"}], "answer": "B", "tip": "油污重"}, {"stageTitle": "第十三關｜早餐任務", "area": "早餐店", "type": "情境", "icon": "🥪", "hero": "早餐紙盒乾不乾淨，是判斷關鍵。", "enemy": "乾淨與否，決定去向。", "question": "乾淨紙盒？", "choices": [{"key": "A", "text": "回收"}, {"key": "B", "text": "垃圾"}, {"key": "C", "text": "廚餘"}], "answer": "A", "tip": "乾淨可回收"}, {"stageTitle": "第十四關｜公司任務", "area": "辦公室", "type": "情境", "icon": "🏢", "hero": "大量便當後，更要注意分類是否正確。", "enemy": "團體用餐後最容易亂成一團。", "question": "便當乾淨盒？", "choices": [{"key": "A", "text": "回收"}, {"key": "B", "text": "垃圾"}, {"key": "C", "text": "丟地上"}], "answer": "A", "tip": "可回收"}, {"stageTitle": "最終關｜勇者試煉", "area": "終章", "type": "綜合", "icon": "👑", "hero": "最後一關了，展現你完整的分類流程判斷。", "enemy": "只有真正的勇者，才能通過最終試煉。", "question": "正確流程？", "choices": [{"key": "A", "text": "直接丟"}, {"key": "B", "text": "清理後分類"}, {"key": "C", "text": "隨便丟"}], "answer": "B", "tip": "完整流程"}];
 
-    const skillMap = {
-      "A":"行動一",
-      "B":"行動二",
-      "C":"行動三"
-    };
-    const iconMap = {
-      "A":"🧭",
-      "B":"✨",
-      "C":"🛡️"
-    };
+  const skillMap = {
+    "A":"行動一",
+    "B":"行動二",
+    "C":"行動三"
+  };
+  const iconMap = {
+    "A":"🧭",
+    "B":"✨",
+    "C":"🛡️"
+  };
 
-    let sessionQuestions = [];
-    let current = -1;
-    let score = 0;
-    let correctCount = 0;
-    let heroLife = 5;
-    let missionValue = 1;
-    let locked = false;
+  let current = -1;
+  let score = 0;
+  let correctCount = 0;
+  let heroLife = 5;
+  let missionValue = 1;
+  let locked = false;
 
-    const stageText = document.getElementById("stageText");
-    const turnText = document.getElementById("turnText");
-    const heroBubble = document.getElementById("heroBubble");
-    const enemyBubble = document.getElementById("enemyBubble");
-    const sceneName = document.getElementById("sceneName");
-    const sceneIcon = document.getElementById("sceneIcon");
-    const heroHpText = document.getElementById("heroHpText");
-    const enemyHpText = document.getElementById("enemyHpText");
-    const heroHpBar = document.getElementById("heroHpBar");
-    const enemyHpBar = document.getElementById("enemyHpBar");
+  const stageText = document.getElementById("stageText");
+  const turnText = document.getElementById("turnText");
+  const heroBubble = document.getElementById("heroBubble");
+  const enemyBubble = document.getElementById("enemyBubble");
+  const sceneName = document.getElementById("sceneName");
+  const sceneIcon = document.getElementById("sceneIcon");
+  const heroHpText = document.getElementById("heroHpText");
+  const enemyHpText = document.getElementById("enemyHpText");
+  const heroHpBar = document.getElementById("heroHpBar");
+  const enemyHpBar = document.getElementById("enemyHpBar");
 
-    const scoreText = document.getElementById("scoreText");
-    const correctText = document.getElementById("correctText");
-    const lifeText = document.getElementById("lifeText");
-    const typeTag = document.getElementById("typeTag");
-    const areaTag = document.getElementById("areaTag");
-    const questionText = document.getElementById("questionText");
-    const helperBox = document.getElementById("helperBox");
-    const battleLog = document.getElementById("battleLog");
-    const choicesBox = document.getElementById("choicesBox");
-    const feedbackBox = document.getElementById("feedbackBox");
-    const startBtn = document.getElementById("startBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const resultBox = document.getElementById("resultBox");
-    const resultDesc = document.getElementById("resultDesc");
-    const rankText = document.getElementById("rankText");
-    const badgeText = document.getElementById("badgeText");
-    const lineBtn = document.getElementById("lineBtn");
+  const scoreText = document.getElementById("scoreText");
+  const correctText = document.getElementById("correctText");
+  const lifeText = document.getElementById("lifeText");
+  const typeTag = document.getElementById("typeTag");
+  const areaTag = document.getElementById("areaTag");
+  const questionText = document.getElementById("questionText");
+  const helperBox = document.getElementById("helperBox");
+  const battleLog = document.getElementById("battleLog");
+  const choicesBox = document.getElementById("choicesBox");
+  const feedbackBox = document.getElementById("feedbackBox");
+  const startBtn = document.getElementById("startBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const resultBox = document.getElementById("resultBox");
+  const resultDesc = document.getElementById("resultDesc");
+  const rankText = document.getElementById("rankText");
+  const badgeText = document.getElementById("badgeText");
+  const lineBtn = document.getElementById("lineBtn");
 
-    function shuffle(arr) {
-      const clone = [...arr];
-      for (let i = clone.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [clone[i], clone[j]] = [clone[j], clone[i]];
-      }
-      return clone;
+  function updateUI() {
+    scoreText.textContent = score;
+    correctText.textContent = correctCount;
+    lifeText.textContent = heroLife;
+    heroHpText.textContent = `${heroLife} / 5`;
+    heroHpBar.style.width = `${(heroLife / 5) * 100}%`;
+    enemyHpText.textContent = `${missionValue} / 1`;
+    enemyHpBar.style.width = `${missionValue * 100}%`;
+    stageText.textContent = current < 0 ? `🗺️ 第 0 關 / ${FIXED_STAGES.length} 關` : `🗺️ 第 ${current + 1} 關 / ${FIXED_STAGES.length} 關`;
+  }
+
+  function renderIntro() {
+    current = -1;
+    score = 0;
+    correctCount = 0;
+    heroLife = 5;
+    missionValue = 1;
+    locked = false;
+
+    document.querySelector(".sub").textContent = "踏上分類試煉，成為環保勇者";
+    const chips = document.querySelector(".chips");
+    chips.innerHTML = `
+      <span class="chip">🍱 紙餐盒主題</span>
+      <span class="chip">📘 固定 15 關</span>
+      <span class="chip">♻️ 流程宣導</span>
+      <span class="chip">📱 手機可玩</span>
+    `;
+    const footer = document.querySelector(".footer-note");
+    if (footer) footer.textContent = "本遊戲以固定 15 關方式，引導民眾認識紙餐盒正確分類與回收流程。";
+
+    turnText.textContent = "準備出發";
+    heroBubble.textContent = "準備出發！完成 15 關紙餐盒試煉吧！";
+    enemyBubble.textContent = "請仔細閱讀情境，找出最適合的紙餐盒處理方式。";
+    sceneName.textContent = "紙餐盒任務";
+    sceneIcon.textContent = "🍱";
+
+    typeTag.textContent = "冒險說明";
+    areaTag.textContent = "起始營地";
+    battleLog.innerHTML = `<strong>任務提示：</strong>請依據冒險選出最合適的行動`;
+    questionText.textContent = "準備好進入紙餐盒分類冒險了嗎？";
+    helperBox.textContent = "你會在不同場景中遇到紙餐盒回收流程與注意事項。請依情境展現身為勇者的智慧、勇氣與力量，完成任務並累積分數。";
+    choicesBox.innerHTML = "";
+    feedbackBox.className = "feedback";
+    feedbackBox.textContent = "";
+    startBtn.style.display = "inline-block";
+    nextBtn.style.display = "none";
+    resultBox.classList.remove("show");
+    lineBtn.href = LINE_DRAW_URL;
+    updateUI();
+  }
+
+  function renderQuestion() {
+    const q = FIXED_STAGES[current];
+    missionValue = 1;
+    locked = false;
+
+    turnText.textContent = "任務進行中";
+    heroBubble.textContent = q.hero;
+    enemyBubble.textContent = q.enemy;
+    sceneName.textContent = q.area;
+    sceneIcon.textContent = q.icon;
+    typeTag.textContent = q.type;
+    areaTag.textContent = q.stageTitle;
+
+    battleLog.innerHTML = `<strong>冒險情境：</strong>你已來到「${q.area}」，請完成本關紙餐盒任務。`;
+    questionText.textContent = q.question;
+    helperBox.textContent = `任務提示：${q.tip}`;
+    feedbackBox.className = "feedback";
+    feedbackBox.textContent = "";
+
+    choicesBox.innerHTML = "";
+    q.choices.forEach(choice => {
+      const btn = document.createElement("button");
+      btn.className = "choice";
+      btn.innerHTML = `
+        <div class="symbol">${iconMap[choice.key] || "🧭"}</div>
+        <div class="meta">
+          <div class="code">${choice.key}. ${skillMap[choice.key] || "行動選擇"}</div>
+          <div class="label">${choice.text}</div>
+        </div>`;
+      btn.addEventListener("click", () => answer(choice.key, btn));
+      choicesBox.appendChild(btn);
+    });
+
+    startBtn.style.display = "none";
+    nextBtn.style.display = "none";
+    updateUI();
+  }
+
+  function answer(key, btn) {
+    if (locked) return;
+    locked = true;
+    const q = FIXED_STAGES[current];
+    const buttons = [...document.querySelectorAll(".choice")];
+    buttons.forEach(b => b.disabled = true);
+
+    const correctIndex = q.choices.findIndex(c => c.key === q.answer);
+    const correctBtn = buttons[correctIndex];
+
+    if (key === q.answer) {
+      missionValue = 0;
+      score += 10;
+      correctCount += 1;
+      btn.classList.add("correct");
+      heroBubble.textContent = "處理正確！這項紙餐盒任務已順利完成。";
+      enemyBubble.textContent = "已成功排除這次的分類風險。";
+      battleLog.innerHTML = `<strong>任務結果：</strong>你做出了正確判斷，成功完成「${q.stageTitle}」。`;
+      feedbackBox.className = "feedback show good";
+      feedbackBox.innerHTML = `✅ <strong>答對了！</strong><br>${q.tip}`;
+    } else {
+      heroLife = Math.max(0, heroLife - 1);
+      btn.classList.add("wrong");
+      if (correctBtn) correctBtn.classList.add("correct");
+      heroBubble.textContent = "這次判斷失誤，再仔細想一想。";
+      enemyBubble.textContent = "若處理不當，可能影響紙餐盒回收品質。";
+      battleLog.innerHTML = `<strong>任務結果：</strong>這次處理方式不夠正確，請記住較適合的做法。`;
+      feedbackBox.className = "feedback show bad";
+      feedbackBox.innerHTML = `❌ <strong>答錯了。</strong><br>正確答案是 ${q.answer}。${q.tip}`;
     }
 
-    function pickBalancedQuestions() {
-      const pools = {
-        danger: QUESTION_BANK.filter(q => q.group === "打擊/炸彈"),
-        process: QUESTION_BANK.filter(q => q.group === "小學堂/炸彈"),
-        concept: QUESTION_BANK.filter(q => q.group === "小學堂")
-      };
+    updateUI();
 
-      const picks = [
-        ...shuffle(pools.danger).slice(0, 6),
-        ...shuffle(pools.process).slice(0, 5),
-        ...shuffle(pools.concept).slice(0, 4)
-      ];
-
-      const unique = [];
-      const used = new Set();
-      for (const q of shuffle(picks)) {
-        if (!used.has(q.id)) {
-          unique.push(q);
-          used.add(q.id);
-        }
-      }
-
-      if (unique.length < 15) {
-        for (const q of shuffle(QUESTION_BANK)) {
-          if (!used.has(q.id)) {
-            unique.push(q);
-            used.add(q.id);
-          }
-          if (unique.length >= 15) break;
-        }
-      }
-      return unique.slice(0, 15);
+    if (heroLife <= 0) {
+      setTimeout(showResult, 350);
+      return;
     }
 
-    function getScene(category) {
-      return sceneMap[category] || sceneMap["預設"];
+    if (current < FIXED_STAGES.length - 1) {
+      nextBtn.style.display = "inline-block";
+    } else {
+      setTimeout(showResult, 350);
+    }
+  }
+
+  function nextQuestion() {
+    current += 1;
+    if (current >= FIXED_STAGES.length) {
+      showResult();
+      return;
+    }
+    renderQuestion();
+  }
+
+  function showResult() {
+    turnText.textContent = "結算完成";
+    resultBox.classList.add("show");
+
+    let rank = "";
+    let badge = "";
+    if (score >= 130) {
+      rank = "👑 紙餐盒分類達人";
+      badge = "你已完成全部紙餐盒試煉，可前往抽獎！";
+    } else if (score >= 100) {
+      rank = "🏆 合格環保勇者";
+      badge = "你已掌握多數紙餐盒分類觀念！";
+    } else {
+      rank = "🌱 見習勇者";
+      badge = "再挑戰一次，讓分類觀念更穩固！";
     }
 
-    function updateUI() {
-      scoreText.textContent = score;
-      correctText.textContent = correctCount;
-      lifeText.textContent = heroLife;
-      heroHpText.textContent = `${heroLife} / 5`;
-      heroHpBar.style.width = `${(heroLife / 5) * 100}%`;
-      enemyHpText.textContent = `${missionValue} / 1`;
-      enemyHpBar.style.width = `${missionValue * 100}%`;
-      stageText.textContent = current < 0 ? `🗺️ 第 0 題 / 15 題` : `🗺️ 第 ${current + 1} 題 / 15 題`;
-    }
+    resultDesc.innerHTML = `本次共答對 <strong>${correctCount}</strong> 題，獲得 <strong>${score}</strong> 分，剩餘生命 <strong>${heroLife}</strong> 點。<br>你已完成固定 15 關的紙餐盒分類試煉。`;
+    rankText.textContent = rank;
+    badgeText.textContent = badge;
+  }
 
-    function renderIntro() {
-      sessionQuestions = pickBalancedQuestions();
-      current = -1;
-      score = 0;
-      correctCount = 0;
-      heroLife = 5;
-      missionValue = 1;
-      locked = false;
-
-      turnText.textContent = "準備出發";
-      heroBubble.textContent = "準備出發！一起完成 15 題冒險挑戰吧！";
-      enemyBubble.textContent = "請仔細閱讀情境，找出最適合的處理方式。";
-      sceneName.textContent = "環境任務";
-      sceneIcon.textContent = "🌿";
-
-      typeTag.textContent = "冒險說明";
-      areaTag.textContent = "起始營地";
-      battleLog.innerHTML = `<strong>任務提示：</strong> 本輪已從題庫中隨機抽出 15 題，並自動平衡危險物、流程題與觀念題。`;
-      questionText.textContent = "準備好進入資源回收冒險了嗎？";
-      helperBox.textContent = "你會在不同場景中遇到需要判斷分類與處理方式的物品。請依情境展現身為勇者的智慧、勇氣與力量，完成任務並累積分數。";
-      choicesBox.innerHTML = "";
-      feedbackBox.className = "feedback";
-      feedbackBox.textContent = "";
-      startBtn.style.display = "inline-block";
-      nextBtn.style.display = "none";
-      resultBox.classList.remove("show");
-      lineBtn.href = LINE_DRAW_URL;
-      updateUI();
-    }
-
-    function renderQuestion() {
-      const q = sessionQuestions[current];
-      const scene = getScene(q.category);
-      missionValue = 1;
-      locked = false;
-
-      turnText.textContent = "任務進行中";
-      heroBubble.textContent = scene.hero;
-      enemyBubble.textContent = scene.enemy;
-      sceneName.textContent = scene.area;
-      sceneIcon.textContent = scene.icon;
-      typeTag.textContent = scene.type;
-      areaTag.textContent = q.category;
-
-      const scenarios = [
-`你在${scene.area}探險時，發現一個與「${q.category}」相關的物品。`,
-`前方出現環境任務！場景：${scene.area}，你需要處理「${q.category}」問題。`,
-`探索途中，你撿到一個「${q.category}」相關物品，該怎麼辦？`
-];
-const randomScenario = scenarios[Math.floor(Math.random()*scenarios.length)];
-battleLog.innerHTML = `<strong>冒險情境：</strong> ${randomScenario}`;
-      questionText.textContent = q.question;
-      helperBox.textContent = q.tip ? `任務提示：${q.tip}` : "請選擇最適合的行動完成任務。";
-      feedbackBox.className = "feedback";
-      feedbackBox.textContent = "";
-
-      choicesBox.innerHTML = "";
-      q.choices.forEach(choice => {
-        const btn = document.createElement("button");
-        btn.className = "choice";
-        btn.innerHTML = `
-          <div class="symbol">${iconMap[choice.key] || "🧭"}</div>
-          <div class="meta">
-            <div class="code">${choice.key}. ${skillMap[choice.key] || "行動選擇"}</div>
-            <div class="label">${choice.text}</div>
-          </div>`;
-        btn.addEventListener("click", () => answer(choice.key, btn));
-        choicesBox.appendChild(btn);
-      });
-
-      startBtn.style.display = "none";
-      nextBtn.style.display = "none";
-      updateUI();
-    }
-
-    function answer(key, btn) {
-      if (locked) return;
-      locked = true;
-      const q = sessionQuestions[current];
-      const buttons = [...document.querySelectorAll(".choice")];
-      buttons.forEach(b => b.disabled = true);
-
-      const correctIndex = q.choices.findIndex(c => c.key === q.answer);
-      const correctBtn = buttons[correctIndex];
-
-      if (key === q.answer) {
-        missionValue = 0;
-        score += 10;
-        correctCount += 1;
-        btn.classList.add("correct");
-        heroBubble.textContent = "處理正確！這項任務已順利完成。";
-        enemyBubble.textContent = "已成功排除這次的環境風險。";
-        battleLog.innerHTML = `<strong>任務結果：</strong> 你做出了正確判斷，成功完成「${q.category}」相關任務。`;
-        feedbackBox.className = "feedback show good";
-        feedbackBox.innerHTML = `✅ <strong>答對了！</strong><br>${q.tip || "已完成本題任務。"}`;
-      } else {
-        heroLife = Math.max(0, heroLife - 1);
-        btn.classList.add("wrong");
-        if (correctBtn) correctBtn.classList.add("correct");
-        heroBubble.textContent = "這次判斷失誤，再仔細想一想。";
-        enemyBubble.textContent = "若處理不當，可能造成環境或安全風險。";
-        battleLog.innerHTML = `<strong>任務結果：</strong> 這次處理方式不夠正確，請記住較適合的做法。`;
-        feedbackBox.className = "feedback show bad";
-        feedbackBox.innerHTML = `❌ <strong>答錯了。</strong><br>正確答案是 ${q.answer}。${q.tip || ""}`;
-      }
-
-      updateUI();
-
-      if (heroLife <= 0) {
-        setTimeout(showResult, 350);
-        return;
-      }
-
-      if (current < sessionQuestions.length - 1) {
-        nextBtn.style.display = "inline-block";
-      } else {
-        setTimeout(showResult, 350);
-      }
-    }
-
-    function nextQuestion() {
-      current += 1;
-      if (current >= sessionQuestions.length) {
-        showResult();
-        return;
-      }
-      renderQuestion();
-    }
-
-    function showResult() {
-      turnText.textContent = "結算完成";
-      resultBox.classList.add("show");
-
-      let rank = "";
-      let badge = "";
-      if (score >= 130) {
-        rank = "👑 傳說級環保勇者";
-        badge = "表現非常出色，歡迎前往抽獎！";
-      } else if (score >= 100) {
-        rank = "🏆 合格環保勇者";
-        badge = "已達到通關門檻，可前往抽獎！";
-      } else if (score >= 70) {
-        rank = "🛡️ 見習勇者";
-        badge = "再挑戰一次，有機會拿到更高分！";
-      } else {
-        rank = "🌱 冒險新手";
-        badge = "先熟悉更多分類觀念，再來挑戰吧！";
-      }
-
-      resultDesc.innerHTML = `本次共答對 <strong>${correctCount}</strong> 題，獲得 <strong>${score}</strong> 分，剩餘生命 <strong>${heroLife}</strong> 點。<br>系統已從題庫中隨機抽出 15 題，並平衡不同類型的宣導重點。`;
-      rankText.textContent = rank;
-      badgeText.textContent = badge;
-    }
-
-    function restartGame() {
-      renderIntro();
-    }
-
-    function handlePlaceholderLine(e) {
-      if (LINE_DRAW_URL === "#" || !LINE_DRAW_URL) {
-        e.preventDefault();
-        alert("目前尚未設定正式 LINE 抽獎連結喔！\n請把 HTML 程式中的 LINE_DRAW_URL 改成你的 LINE 加好友或抽獎網址。");
-      }
-    }
-
-    startBtn.addEventListener("click", nextQuestion);
-    nextBtn.addEventListener("click", nextQuestion);
-    lineBtn.addEventListener("click", handlePlaceholderLine);
-
+  function restartGame() {
     renderIntro();
-    window.restartGame = restartGame;
-  </script>
+  }
+
+  function handlePlaceholderLine(e) {
+    if (LINE_DRAW_URL === "#" || !LINE_DRAW_URL) {
+      e.preventDefault();
+      alert("目前尚未設定正式 LINE 抽獎連結喔！\n請把 HTML 程式中的 LINE_DRAW_URL 改成你的 LINE 加好友或抽獎網址。");
+    }
+  }
+
+  startBtn.addEventListener("click", nextQuestion);
+  nextBtn.addEventListener("click", nextQuestion);
+  lineBtn.addEventListener("click", handlePlaceholderLine);
+
+  renderIntro();
+  window.restartGame = restartGame;
+</script>
+
 </body>
 </html>
