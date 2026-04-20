@@ -517,7 +517,7 @@ h1{
 <script>
   const LINE_DRAW_URL = "#";
 
-  const FIXED_STAGES = [{"stageTitle": "第一關｜油污危機", "area": "你來到便當村，油污怪正在污染餐盒。", "type": "油污判斷", "icon": "🛢️", "hero": "勇者：這些餐盒還能回收嗎？", "enemy": "油污怪：哈哈！我已經讓它變得無法回收了！", "question": "紙餐盒沾滿油污應如何處理？", "choices": [{"key": "A", "text": "紙類回收"}, {"key": "B", "text": "沖水後紙容器回收"}, {"key": "C", "text": "一般垃圾"}], "answer": "B", "tip": "應沖洗乾淨後回收"}, {"stageTitle": "第二關｜清潔試煉", "area": "你進入清潔工坊，殘渣魔四處散落。", "type": "流程", "icon": "🧽", "hero": "勇者：要先處理這些殘渣！", "enemy": "殘渣魔：不清理我，你就失敗了！", "question": "回收前第一步？", "choices": [{"key": "A", "text": "直接丟"}, {"key": "B", "text": "清除殘渣"}, {"key": "C", "text": "壓扁"}], "answer": "B", "tip": "需先清除殘渣"}, {"stageTitle": "第三關｜分類判斷", "area": "分類神殿守門人出現。", "type": "分類", "icon": "♻️", "hero": "勇者：讓我證明我會分類！", "enemy": "守門人：選錯就無法通過！", "question": "乾淨紙餐盒應？", "choices": [{"key": "A", "text": "一般垃圾"}, {"key": "B", "text": "紙容器回收"}, {"key": "C", "text": "紙類回收"}], "answer": "B", "tip": "有特殊膠膜需以紙容器回收"}, {"stageTitle": "第四關｜進階挑戰", "area": "外送驛站被油霧籠罩。", "type": "判斷", "icon": "🍱", "hero": "勇者：這種狀況要判斷！", "enemy": "油霧：你分得清嗎？", "question": "少量油漬？", "choices": [{"key": "A", "text": "直接回收"}, {"key": "B", "text": "沖水後紙容器回收"}, {"key": "C", "text": "一般垃圾"}], "answer": "B", "tip": "應去除油污避免影響回收品質"}, {"stageTitle": "第五關｜觀念試煉", "area": "圖書館出現知識之靈。", "type": "觀念", "icon": "🍱", "hero": "勇者：我要理解原因！", "enemy": "知識之靈：答對才是真懂！", "question": "餐盒為何不能當作紙類回收", "choices": [{"key": "A", "text": "太重"}, {"key": "B", "text": "特殊材質"}, {"key": "C", "text": "沒價值"}], "answer": "B", "tip": "紙餐盒塑膠淋膜需特殊處理"}, {"stageTitle": "第六關｜分離任務", "area": "分類站出現分離獸。", "type": "流程", "icon": "♻️", "hero": "勇者：不同材質要分開！", "enemy": "分離獸：混在一起就完了！", "question": "餐盒與塑膠蓋應？", "choices": [{"key": "A", "text": "一起回收"}, {"key": "B", "text": "分開處理"}, {"key": "C", "text": "丟垃圾"}], "answer": "B", "tip": "材質不同"}, {"stageTitle": "第七關｜湯汁危機", "area": "廚餘區變得更危險。", "type": "判斷", "icon": "🥣", "hero": "勇者：不能讓殘渣污染！", "enemy": "殘渣怪：留下我吧！", "question": "裝湯紙盒應？", "choices": [{"key": "A", "text": "紙類回收"}, {"key": "B", "text": "沖水後紙容器回收"}, {"key": "C", "text": "一般垃圾"}], "answer": "B", "tip": "污染嚴重"}, {"stageTitle": "第八關｜早餐任務", "area": "外送區出現湯汁王。", "type": "情境", "icon": "🥣", "hero": "勇者：這已經太髒了！", "enemy": "湯汁王：你敢回收嗎？", "question": "乾淨紙盒？", "choices": [{"key": "A", "text": "回收"}, {"key": "B", "text": "一般垃圾"}, {"key": "C", "text": "廚餘"}], "answer": "A", "tip": "乾淨可回收"}, {"stageTitle": "第九關｜公司任務", "area": "整理站出現守衛。", "type": "情境", "icon": "🏢", "hero": "勇者：該壓嗎？", "enemy": "守衛：看你判斷！", "question": "便當乾淨盒？", "choices": [{"key": "A", "text": "回收"}, {"key": "B", "text": "一般垃圾"}, {"key": "C", "text": "丟地上"}], "answer": "A", "tip": "可回收"}, {"stageTitle": "最終關｜勇者試煉", "area": "你來到最終聖殿，環保之王現身。", "type": "綜合", "icon": "👑", "hero": "勇者：我已學會所有流程！", "enemy": "環保之王：證明給我看！", "question": "正確流程？", "choices": [{"key": "A", "text": "直接丟"}, {"key": "B", "text": "清理後分類"}, {"key": "C", "text": "隨便丟"}], "answer": "B", "tip": "完整流程"}];
+  const FIXED_STAGES = [{"stageTitle": "第一關｜油污危機", "area": "你來到便當村，油污怪正在污染餐盒。", "type": "油污判斷", "icon": "🍱", "hero": "先判斷這個紙餐盒是否受到油污影響。", "enemy": "油污是紙餐盒回收最常見的陷阱。", "question": "勇者：這些餐盒還能回收嗎？", "choices": [{"key": "A", "text": "油污怪：哈哈！我已經讓它變得無法回收了！"}, {"key": "B", "text": "紙餐盒沾滿油污應如何處理？"}, {"key": "C", "text": "紙類回收"}], "answer": "沖水後紙容器回收", "tip": "一般垃圾"}, {"stageTitle": "第二關｜清潔試煉", "area": "你進入清潔工坊，殘渣魔四處散落。", "type": "流程", "icon": "🧽", "hero": "回收前的前處理，是勇者的基本功。", "enemy": "沒先清理乾淨，後續回收就會受影響。", "question": "勇者：要先處理這些殘渣！", "choices": [{"key": "A", "text": "殘渣魔：不清理我，你就失敗了！"}, {"key": "B", "text": "回收前第一步？"}, {"key": "C", "text": "直接丟"}], "answer": "清除殘渣", "tip": "壓扁"}, {"stageTitle": "第三關｜分類判斷", "area": "分類神殿守門人出現。", "type": "分類", "icon": "♻️", "hero": "分對去向，才是真正完成任務。", "enemy": "看起來像紙，不一定都能回收。", "question": "勇者：讓我證明我會分類！", "choices": [{"key": "A", "text": "守門人：選錯就無法通過！"}, {"key": "B", "text": "乾淨紙餐盒應？"}, {"key": "C", "text": "一般垃圾"}], "answer": "紙容器回收", "tip": "紙類回收"}, {"stageTitle": "第四關｜進階挑戰", "area": "外送驛站被油污籠罩。", "type": "判斷", "icon": "🛵", "hero": "這題要看實際污染程度，不能一概而論。", "enemy": "外送餐盒最容易讓人誤判。", "question": "勇者：這種狀況要判斷！", "choices": [{"key": "A", "text": "油污：你分得清嗎？"}, {"key": "B", "text": "少量油漬？"}, {"key": "C", "text": "直接回收"}], "answer": "沖洗後紙容器回收", "tip": "一般垃圾"}, {"stageTitle": "第五關｜觀念試煉", "area": "圖書館出現知識之靈。", "type": "觀念", "icon": "📘", "hero": "真正的勇者，也會理解背後原因。", "enemy": "知道為什麼，才記得更久。", "question": "勇者：我要理解原因！", "choices": [{"key": "A", "text": "知識之靈：答對才是真懂！"}, {"key": "B", "text": "餐盒為何不能當作紙類回收"}, {"key": "C", "text": "太重"}], "answer": "特殊材質", "tip": "沒價值"}, {"stageTitle": "第六關｜分離任務", "area": "分類站出現分離獸。", "type": "流程", "icon": "♻️", "hero": "分對去向，才是真正完成任務。", "enemy": "看起來像紙，不一定都能回收。", "question": "勇者：不同材質要分開！", "choices": [{"key": "A", "text": "分離獸：混在一起就完了！"}, {"key": "B", "text": "餐盒與塑膠蓋應？"}, {"key": "C", "text": "一起回收"}], "answer": "分開處理", "tip": "丟垃圾"}, {"stageTitle": "第七關｜湯汁危機", "area": "廚餘區變得更危險。", "type": "判斷", "icon": "🍱", "hero": "請依情境做出最合適的行動。", "enemy": "錯誤分類會影響整體回收品質。", "question": "勇者：不能讓殘渣污染！", "choices": [{"key": "A", "text": "殘渣怪：留下我吧！"}, {"key": "B", "text": "裝湯紙盒應？"}, {"key": "C", "text": "紙類回收"}], "answer": "沖水後紙容器回收", "tip": "一般垃圾"}, {"stageTitle": "第八關｜早餐任務", "area": "外送區要如何減少紙餐盒怪。", "type": "情境", "icon": "🛵", "hero": "這題要看實際污染程度，不能一概而論。", "enemy": "外送餐盒最容易讓人誤判。", "question": "勇者：這裡的紙餐盒怪太多了！", "choices": [{"key": "A", "text": "紙餐盒怪：看你還能拿出什麼武器？"}, {"key": "B", "text": "外帶早餐可以如何減少垃圾量?"}, {"key": "C", "text": "使用塑膠袋"}], "answer": "自備環保餐盒", "tip": "索取竹筷塑膠湯匙"}, {"stageTitle": "第九關｜公司任務", "area": "整理站出現守衛。", "type": "情境", "icon": "📦", "hero": "整理與壓縮，也是一種環保能力。", "enemy": "處理得宜，回收效率更高。", "question": "勇者：該壓嗎？", "choices": [{"key": "A", "text": "守衛：看你判斷！"}, {"key": "B", "text": "便當乾淨盒？"}, {"key": "C", "text": "回收"}], "answer": "一般垃圾", "tip": "丟地上"}, {"stageTitle": "最終關｜勇者試煉", "area": "你來到最終聖殿，環保之王現身。", "type": "綜合", "icon": "👑", "hero": "最後一關了，展現你完整的分類流程判斷。", "enemy": "只有真正的勇者，才能通過最終試煉。", "question": "勇者：我已擁有環保之力", "choices": [{"key": "A", "text": "環保之王：請讓我看看你所得到的力量！"}, {"key": "B", "text": "勇者可以如何用回收保護地球?"}, {"key": "C", "text": "增加污染"}], "answer": "減少垃圾落實資源循環", "tip": "可以侵占動物生存空間"}];
 
   const skillMap = {
     "A":"行動一",
@@ -589,12 +589,12 @@ h1{
     const chips = document.querySelector(".chips");
     chips.innerHTML = `
       <span class="chip">🍱 紙餐盒主題</span>
-      <span class="chip">📘 固定 ${FIXED_STAGES.length} 關</span>
+      <span class="chip">📘 固定 $10 關</span>
       <span class="chip">♻️ 流程宣導</span>
       <span class="chip">📱 手機可玩</span>
     `;
     const footer = document.querySelector(".footer-note");
-    if (footer) footer.textContent = `本遊戲以固定 ${FIXED_STAGES.length} 關方式，引導民眾認識紙餐盒正確分類與回收流程。`;
+    if (footer) footer.textContent = "本遊戲以固定關卡方式，引導民眾認識紙餐盒正確分類與回收流程。";
 
     turnText.textContent = "準備出發";
     heroBubble.textContent = `準備出發！完成 ${FIXED_STAGES.length} 關紙餐盒試煉吧！`;
@@ -625,12 +625,12 @@ h1{
     turnText.textContent = "任務進行中";
     heroBubble.textContent = q.hero;
     enemyBubble.textContent = q.enemy;
-    sceneName.textContent = q.stageTitle;
+    sceneName.textContent = q.area;
     sceneIcon.textContent = q.icon;
     typeTag.textContent = q.type;
-    areaTag.textContent = `第 ${current + 1} 關`;
+    areaTag.textContent = q.stageTitle;
 
-    battleLog.innerHTML = `<strong>冒險情境：</strong>${q.area}`;
+    battleLog.innerHTML = `<strong>冒險情境：</strong>你已來到「${q.area}」，請完成本關紙餐盒任務。`;
     questionText.textContent = q.question;
     helperBox.textContent = `任務提示：${q.tip}`;
     feedbackBox.className = "feedback";
@@ -718,7 +718,7 @@ h1{
     if (score >= Math.max(80, FIXED_STAGES.length * 8)) {
       rank = "👑 紙餐盒分類達人";
       badge = "你已完成全部紙餐盒試煉，可前往抽獎！";
-    } else if (score >= Math.max(50, FIXED_STAGES.length * 6)) {
+    } else if (score >= Math.max(60, FIXED_STAGES.length * 6)) {
       rank = "🏆 合格環保勇者";
       badge = "你已掌握多數紙餐盒分類觀念！";
     } else {
