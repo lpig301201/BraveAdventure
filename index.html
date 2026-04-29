@@ -694,6 +694,81 @@ h1{
   }
 }
 
+
+/* ===== 任務狀態 UI 升級版 ===== */
+@media (max-width:720px){
+  .stagebar{
+    display:grid !important;
+    grid-template-columns: auto 1fr !important;
+    align-items:center !important;
+    gap:6px !important;
+  }
+
+  .turntext{
+    justify-self:end !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    gap:5px !important;
+    max-width:140px !important;
+    padding:5px 8px !important;
+    border-radius:999px !important;
+    background:linear-gradient(135deg,#fef3c7,#fde68a) !important;
+    border:1px solid rgba(245,158,11,.9) !important;
+    color:#92400e !important;
+    font-size:.68rem !important;
+    font-weight:900 !important;
+    box-shadow:0 4px 12px rgba(15,23,42,.18) !important;
+    white-space:nowrap !important;
+  }
+
+  .turntext::before{
+    content:"⚔️";
+    font-size:.75rem;
+  }
+
+  .actor.enemy{
+    padding-top:2px !important;
+  }
+
+  .actor.enemy .sprite{
+    display:block !important;
+    margin:2px auto 0 !important;
+    position:relative !important;
+    top:0 !important;
+  }
+
+  .actor.enemy .name{
+    margin-top:2px !important;
+    line-height:1.2 !important;
+  }
+}
+
+/* 手機任務狀態閃光感 */
+@keyframes missionPulse{
+  0%,100%{filter:brightness(1);}
+  50%{filter:brightness(1.08);}
+}
+.turntext{
+  animation:missionPulse 1.8s ease-in-out infinite;
+}
+
+
+/* ===== 戰鬥區右側角色對齊修正 ===== */
+@media (max-width:720px){
+  .battlefield .actors{
+    align-items:stretch !important;
+  }
+  .battlefield .actor{
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:flex-end !important;
+  }
+  .battlefield .actor.enemy .sprite,
+  .battlefield .actor.hero .sprite{
+    align-self:center !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -916,7 +991,7 @@ h1{
     const footer = document.querySelector(".footer-note");
     if (footer) footer.textContent = "本遊戲以固定關卡方式，引導民眾認識紙餐盒正確分類與回收流程。";
 
-    turnText.textContent = "準備出發";
+    turnText.textContent = "準備";
     heroBubble.textContent = `準備出發！完成 ${FIXED_STAGES.length} 關紙餐盒試煉吧！`;
     enemyBubble.textContent = "請仔細閱讀情境，找出最適合的紙餐盒處理方式。";
     sceneName.textContent = "紙餐盒任務";
@@ -942,7 +1017,7 @@ h1{
     missionValue = 1;
     locked = false;
 
-    turnText.textContent = "任務進行中";
+    turnText.textContent = "任務中";
     heroBubble.textContent = q.hero;
     enemyBubble.textContent = q.enemy;
     sceneName.textContent = q.area;
@@ -1044,7 +1119,7 @@ h1{
   }
 
   function showResult() {
-    turnText.textContent = "結算完成";
+    turnText.textContent = "結算";
     resultBox.classList.add("show");
 
     let rank = "";
