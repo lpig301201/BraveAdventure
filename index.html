@@ -779,10 +779,8 @@ h1{
         踏上分類試煉，成為環保勇者
       </p>
       <div class="chips">
-        <span class="chip">🍱 紙餐盒主題</span>
-        <span class="chip">📘 固定關卡</span>
         <span class="chip">🔀 選項隨機</span>
-        <span class="chip">📱 手機可玩</span>
+        
       </div>
     </section>
 
@@ -821,7 +819,7 @@ h1{
           <div class="stat"><div class="label">勇者分數</div><div class="value" id="scoreText">0</div></div>
           <div class="stat"><div class="label">答對題數</div><div class="value" id="correctText">0</div></div>
           <div class="stat"><div class="label">剩餘生命</div><div class="value" id="lifeText">5</div></div>
-          <div class="stat"><div class="label">通關門檻</div><div class="value">100 分</div></div>
+          <div class="stat"><div class="label">抽獎門檻</div><div class="value">答對5題</div></div>
         </div>
 
         <div class="command-shell">
@@ -841,7 +839,7 @@ h1{
               <div class="question-title">🗺️ 冒險情境</div>
               <div class="question" id="questionText">準備好進入資源回收冒險了嗎？</div>
               <div class="helper-box" id="helperBox">
-                你會在不同場景中遇到需要判斷分類與處理方式的物品。請依情境展現身為勇者的智慧、勇氣與力量，完成任務並累積分數。
+                請依據情境判斷最適合的處理方式，完成挑戰並累積分數。
               </div>
             </div>
 
@@ -866,7 +864,7 @@ h1{
           <div class="badge" id="badgeText"></div>
           <div class="actions" style="justify-content:center; margin-top:18px;">
             <a class="btn btn-line" id="lineBtn" href="#" target="_blank" rel="noopener noreferrer">前往 LINE 抽獎 🎁</a>
-            <button class="btn btn-primary" onclick="restartGame()">再玩一次</button>
+            <button class="btn btn-primary" onclick="restartGame()">重新挑戰 ⚔️</button>
           </div>
           <p class="small" style="margin-top:10px;">
             請將程式中的 <strong>LINE_DRAW_URL</strong> 改成你的 LINE 加好友或抽獎連結。
@@ -983,25 +981,24 @@ h1{
     document.querySelector(".sub").textContent = "踏上分類試煉，成為環保勇者";
     const chips = document.querySelector(".chips");
     chips.innerHTML = `
-      <span class="chip">🍱 紙餐盒主題</span>
-      <span class="chip">📘 固定 ${FIXED_STAGES.length} 關</span>
-      <span class="chip">♻️ 流程宣導</span>
-      <span class="chip">📱 手機可玩</span>
+      
+      
+      
     `;
     const footer = document.querySelector(".footer-note");
-    if (footer) footer.textContent = "本遊戲以固定關卡方式，引導民眾認識紙餐盒正確分類與回收流程。";
+    if (footer) footer.textContent = "透過冒險挑戰，引導民眾認識紙餐盒正確分類與回收流程。";
 
     turnText.textContent = "準備";
-    heroBubble.textContent = `準備出發！完成 ${FIXED_STAGES.length} 關紙餐盒試煉吧！`;
+    heroBubble.textContent = "準備出發！一起完成紙餐盒試煉吧！";
     enemyBubble.textContent = "請仔細閱讀情境，找出最適合的紙餐盒處理方式。";
     sceneName.textContent = "紙餐盒任務";
     sceneIcon.textContent = "🍱";
 
     typeTag.textContent = "冒險說明";
     areaTag.textContent = "起始營地";
-    battleLog.innerHTML = `<strong>任務提示：</strong>請依據冒險選出最合適的行動`;
+    battleLog.innerHTML = `<strong>冒險說明：</strong>請依據情境選出最合適的行動。答對 5 題以上即可取得抽獎資格。`;
     questionText.textContent = "準備好進入紙餐盒分類冒險了嗎？";
-    helperBox.textContent = "你會在不同場景中遇到紙餐盒回收流程與注意事項。請依情境展現身為勇者的智慧、勇氣與力量，完成任務並累積分數。";
+    helperBox.textContent = "你會在不同場景中遇到紙餐盒回收情境。請依情境判斷最適合的處理方式，完成挑戰並累積分數。";
     choicesBox.innerHTML = "";
     feedbackBox.className = "feedback";
     feedbackBox.textContent = "";
@@ -1027,7 +1024,7 @@ h1{
 
     battleLog.innerHTML = `<strong>冒險情境：</strong>${q.area}`;
     questionText.textContent = q.question;
-    helperBox.textContent = `任務提示：${q.tip}`;
+    helperBox.textContent = "請依據情境判斷最適合的處理方式。";
     feedbackBox.className = "feedback";
     feedbackBox.textContent = "";
 
@@ -1083,7 +1080,7 @@ h1{
       enemyBubble.textContent = "已成功排除這次的分類風險。";
       battleLog.innerHTML = `<strong>任務結果：</strong>你做出了正確判斷，成功完成「${q.stageTitle}」。`;
       feedbackBox.className = "feedback show good";
-      feedbackBox.innerHTML = `✅ <strong>答對了！</strong><br>${q.tip}`;
+      feedbackBox.innerHTML = `✅ <strong>答對了！</strong><br>你做出了正確判斷。`;
     } else {
       heroLife = Math.max(0, heroLife - 1);
       btn.classList.add("wrong");
@@ -1092,7 +1089,7 @@ h1{
       enemyBubble.textContent = "若處理不當，可能影響紙餐盒回收品質。";
       battleLog.innerHTML = `<strong>任務結果：</strong>這次處理方式不夠正確，請記住較適合的做法。`;
       feedbackBox.className = "feedback show bad";
-      feedbackBox.innerHTML = `❌ <strong>答錯了。</strong><br>正確答案是 ${displayAnswer}。${q.tip}`;
+      feedbackBox.innerHTML = `❌ <strong>答錯了。</strong><br>正確答案是 ${displayAnswer}。`;
     }
 
     updateUI();
@@ -1122,22 +1119,27 @@ h1{
     turnText.textContent = "結算";
     resultBox.classList.add("show");
 
+    const passReward = correctCount >= 5;
     let rank = "";
-    let badge = "";
-    if (score >= Math.max(80, FIXED_STAGES.length * 8)) {
+
+    if (correctCount >= 8) {
       rank = "👑 紙餐盒分類達人";
-      badge = "你已完成全部紙餐盒試煉，可前往抽獎！";
-    } else if (score >= Math.max(60, FIXED_STAGES.length * 6)) {
+    } else if (passReward) {
       rank = "🏆 合格環保勇者";
-      badge = "你已掌握多數紙餐盒分類觀念！";
     } else {
       rank = "🌱 見習勇者";
-      badge = "再挑戰一次，讓分類觀念更穩固！";
     }
 
-    resultDesc.innerHTML = `本次共答對 <strong>${correctCount}</strong> 題，獲得 <strong>${score}</strong> 分，剩餘生命 <strong>${heroLife}</strong> 點。<br>你已完成固定 ${FIXED_STAGES.length} 關的紙餐盒分類試煉。`;
+    resultDesc.innerHTML = `本次共答對 <strong>${correctCount}</strong> 題，獲得 <strong>${score}</strong> 分，剩餘生命 <strong>${heroLife}</strong> 點。<br>你已完成本次紙餐盒分類試煉。`;
     rankText.textContent = rank;
-    badgeText.textContent = badge;
+
+    if (passReward) {
+      badgeText.textContent = "🎁 已達抽獎資格！可前往 LINE 抽獎";
+      lineBtn.style.display = "inline-block";
+    } else {
+      badgeText.textContent = "⚠️ 尚未達抽獎門檻（需答對 5 題以上），是否要繼續挑戰？";
+      lineBtn.style.display = "none";
+    }
   }
 
   function restartGame() {
