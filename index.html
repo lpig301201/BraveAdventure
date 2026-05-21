@@ -779,7 +779,7 @@ h1{
         踏上分類試煉，成為環保勇者
       </p>
       <div class="chips">
-        <span class="chip">🔀 選項隨機</span>
+        <span class="chip">📌 選項固定</span>
         
       </div>
     </section>
@@ -904,21 +904,10 @@ h1{
     return a;
   }
 
-  function prepareDisplayChoices(question){
-    const newKeys = ["A", "B", "C"];
-    const shuffledOriginalChoices = shuffleArray(question.choices);
-
-    const displayChoices = shuffledOriginalChoices.map((choice, index) => ({
-      key: newKeys[index],
-      originalKey: choice.key,
-      text: choice.text
-    }));
-
-    const correctDisplayChoice = displayChoices.find(choice => choice.originalKey === question.answer);
-
+  function prepareDisplayChoices(question) {
     return {
-      choices: displayChoices,
-      answer: correctDisplayChoice ? correctDisplayChoice.key : question.answer
+      choices: question.choices,
+      answer: question.answer
     };
   }
 
